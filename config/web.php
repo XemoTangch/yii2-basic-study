@@ -44,8 +44,8 @@ $config = [
         ],
         'db' => $db,
         'urlManager' => [
-            'enablePrettyUrl' => false,
-            'showScriptName' => true,
+            'enablePrettyUrl' => true, // 选择true，要在配置好域名后才能正常使用
+            'showScriptName' => false, // 选择false，要在服务配置中重写路由
             'rules' => [
             ],
         ],
