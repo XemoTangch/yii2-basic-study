@@ -18,10 +18,9 @@ $this->title = $name;
     </div>
 
     <p>
-        The above error occurred while the Web server was processing your request.
+        抱歉，请求发生错误。如果您认为是服务器错误，请您联系我们，谢谢。
     </p>
     <p>
-        Please contact us if you think this is a server error. Thank you.
+        邮箱地址：jmphper@foxmial.com
     </p>
-
 </div>
