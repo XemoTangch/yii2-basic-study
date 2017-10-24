@@ -25,3 +25,19 @@ class Database
 }
 // 数据库适配器
 class MysqlAdapter {}
+
+
+// 依赖反转准则，通过接口类实现
+class Database2
+{
+    protected $adapter;
+
+    public function __construct(AdapterInterface $adapter)
+    {
+        $this->adapter = $adapter;
+    }
+}
+
+interface AdapterInterface {}
+
+class MysqlAdapter2 implements AdapterInterface {}
