@@ -23,6 +23,10 @@ $this->title = '列表页';
     .list-padding {
         padding-top: 10px;
     }
+    body {
+        font-family: '微软雅黑', console;
+        font-size: 16px;
+    }
 </style>
 <div class="container">
 
