@@ -8,7 +8,11 @@
  */
 
 ?>
-
+<style type="text/css">
+    .myRow{
+        margin-top: 20px;
+    }
+</style>
 <link href="https://fonts.gdgdocs.org/css?family=Lobster" rel="stylesheet" type="text/css">
 <div class="container" style="margin: 60px auto;">
     <div class="jumbotron">
