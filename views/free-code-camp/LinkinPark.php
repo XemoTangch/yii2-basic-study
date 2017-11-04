@@ -12,6 +12,9 @@
     .myRow{
         margin-top: 20px;
     }
+    .myButton{
+        color: red;
+    }
 </style>
 <link href="https://fonts.gdgdocs.org/css?family=Lobster" rel="stylesheet" type="text/css">
 <div class="container" style="margin: 60px auto;">
