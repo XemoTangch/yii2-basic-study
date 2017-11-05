@@ -23,4 +23,8 @@ class FreeCodeCampController extends Controller
     public function actionLinkinPark(){
         return $this->render('LinkinPark');
     }
+
+    public function actionHomepage(){
+        return $this->render('Homepage');
+    }
 }
