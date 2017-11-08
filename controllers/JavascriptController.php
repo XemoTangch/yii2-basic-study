@@ -21,7 +21,7 @@ class JavascriptController extends Controller
     }
 
     public function actionIndex(){
-        $type = Yii::$app->request->get('', 'index');
+        $type = Yii::$app->request->get('type', 'index');
         return $this->render($type);
     }
 
