@@ -8,6 +8,9 @@
  */
 $this->title = 'Homepage';
 ?>
+<style>
+    
+</style>
 
 <div class="wrap">
 
