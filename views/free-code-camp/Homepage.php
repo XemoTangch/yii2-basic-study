@@ -10,6 +10,7 @@ $this->title = 'Homepage';
 ?>
 <style>
  /* 2017-11-12 no update */
+ /* 2017-11-13 no update */
 </style>
 
 <div class="wrap">
