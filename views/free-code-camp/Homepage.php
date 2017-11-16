@@ -12,6 +12,10 @@ $this->title = 'Homepage';
  /* 2017-11-12 no update */
  /* 2017-11-13 no update */
  /* 2017-11-14 no update */
+
+    .div1 {
+        
+    }
 </style>
 
 <div class="wrap">
