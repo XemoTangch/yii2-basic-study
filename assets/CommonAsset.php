@@ -10,6 +10,7 @@
 namespace app\assets;
 
 use yii\web\AssetBundle;
+use yii\web\View;
 
 class CommonAsset extends AssetBundle
 {
@@ -22,4 +23,11 @@ class CommonAsset extends AssetBundle
     public $depends = [
         'yii\bootstrap\BootstrapPluginAsset', // bootstrap
     ];
+
+    /**
+     * @inheritdoc
+     */
+    public $jsOptions = [
+        'position' => View::POS_HEAD,
+    ];  // 这是设置所有js放置的位置
 }
