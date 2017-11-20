@@ -59,7 +59,7 @@ $this->title = 'Homepage';
                 <h1>ABOUT <small>个人信息</small></h1>
             </div>
             <div class="jumbotron margin-top-20">
-                <h1>Hello, world!</h1>
+                <h1>我的个人信息</h1>
                 <p>...</p>
                 <p>...</p>
                 <p>...</p>
