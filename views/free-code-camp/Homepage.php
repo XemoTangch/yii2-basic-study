@@ -16,6 +16,7 @@ $this->title = 'Homepage';
     .div1 {
         
     }
+ 
     .my-image-margin {
         margin: 20px 0;
     }
