@@ -8,6 +8,10 @@
  */
 
 $this->title = '运营数据统计';
+
+$this->registerJsFile('@web/imhg/js/echarts.min.js');
+$this->registerJsFile('@web/imhg/js/data.js');
+$this->registerJsFile('http://api.map.baidu.com/api?v=2.0&ak=jA8OGGeqTQlRtz4m95YGVez8UaEdLgXe');
 ?>
 
 <div class="wrap">
@@ -78,7 +82,7 @@ $this->title = '运营数据统计';
         window.onresize = function(){
             window_height = document.documentElement.clientHeight;
             window_width = document.documentElement.clientWidth;
-            console.info(window_width+' - '+window_height);
+//            console.info(window_width+' - '+window_height);
         }
 
         $('.getChart').on('click', function(){
@@ -87,7 +91,7 @@ $this->title = '运营数据统计';
             if(window_width < 768){
                 $('#mobile_btn').click();
             }
-            
+
         });
     });
 </script>
