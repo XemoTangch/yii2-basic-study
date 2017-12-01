@@ -25,4 +25,8 @@ class JavascriptController extends Controller
         return $this->render($type);
     }
 
+    public function actionTest(){
+        return $this->render('test');
+    }
+
 }

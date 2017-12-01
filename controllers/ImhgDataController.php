@@ -16,18 +16,22 @@ class ImhgDataController extends Controller
 {
 
     public $layout = false;
-    public $stime;
-    public $etime;
+    public $start_time;
+    public $end_time;
     public function init(){
         parent::init();
         // 默认时间
-        $this->stime = date('Ymd', time()-(14*24*3600));
-        $this->etime = date('Ymd', time());
+        $this->start_time = date('Ymd', time()-(14*24*3600));
+        $this->end_time = date('Ymd', time());
         $this->layout = 'normal';
     }
 
     public function actionIndex(){
         return $this->render('index');
+    }
+
+    public function actionBraTest(){
+        die('{"text":"\u603b\u91cf\u7edf\u8ba1","subtext":"","legend_data":["\u603b\u6570\u91cf"],"xAxis_data":["\u7528\u6237","\u6d3b\u52a8","\u6d77\u5f52\u5708","\u6d77\u8c08","\u521b\u4e1a\u9879\u76ee","\u7fa4\u7ec4"],"series":[{"name":"\u603b\u6570\u91cf","type":"bar","data":["352","27","850","37","4","0"]}]}');
     }
 
     /*
@@ -38,8 +42,8 @@ class ImhgDataController extends Controller
     public function actionAjaxAllNumber() {
         if(!Yii::app()->session['is_admin']) exit; // 没有权限
 
-        $stime = Yii::app()->request->getParam('stime', $this->stime);
-        $etime = Yii::app()->request->getParam('etime', $this->etime);
+        $start_time = Yii::app()->request->getParam('start_time', $this->start_time);
+        $end_time = Yii::app()->request->getParam('end_time', $this->end_time);
         // 返回数据
         $return['text'] = '总量统计';
         $return['subtext'] = '';
@@ -48,13 +52,13 @@ class ImhgDataController extends Controller
 
         // 时间段
         $where = '';
-        if($stime){
-            $stime = strtotime($stime);
-            $where .= ' ctime>='.$stime.' AND';
+        if($start_time){
+            $start_time = strtotime($start_time);
+            $where .= ' ctime>='.$start_time.' AND';
         }
-        if($etime){
-            $etime = strtotime($etime)+24*3600;
-            $where .= ' ctime<='.$etime.' AND';
+        if($end_time){
+            $end_time = strtotime($end_time)+24*3600;
+            $where .= ' ctime<='.$end_time.' AND';
         }
 
         // 获取用户总数据
@@ -343,11 +347,11 @@ class ImhgDataController extends Controller
     public function actionAjaxUserFunnel(){
         if(!Yii::app()->session['is_admin']) exit; // 没有权限
 
-        $stime = Yii::app()->request->getParam('stime', $this->stime);
-        $etime = Yii::app()->request->getParam('etime', $this->etime);
+        $start_time = Yii::app()->request->getParam('start_time', $this->start_time);
+        $end_time = Yii::app()->request->getParam('end_time', $this->end_time);
         //转换为 开始时间戳  和结束当天 凌晨时间戳
-        $stime = $stime?strtotime($stime):0;
-        $etime = $etime?strtotime($etime)+24*3600:time();
+        $start_time = $start_time?strtotime($start_time):0;
+        $end_time = $end_time?strtotime($end_time)+24*3600:time();
 
         $return['text'] = "用户漏斗图"; //标题
         $return['subtext'] = ""; //副标题
@@ -390,7 +394,7 @@ class ImhgDataController extends Controller
         $eventOrderDB->from(EventOrder::model()->tableName(). ' as eo');
         $eventOrderDB->leftJoin(User::model()->tableName() . ' as u', 'eo.uid = u.uid');
         $eventOrderDB->where('eo.status=2 and u.status in (0,1,2) and eo.uid in ('.$userRegisterUid.')');// 已付款的非加v用户
-        $eventOrderDB->andWhere('eo.ctime>='.$stime.' and eo.ctime<='.$etime);
+        $eventOrderDB->andWhere('eo.ctime>='.$start_time.' and eo.ctime<='.$end_time);
         $eventOrderDB->group("uid");
         $eventOrderNumber = $eventOrderDB->queryAll();
         $userFf += count($eventOrderNumber);
@@ -412,11 +416,11 @@ class ImhgDataController extends Controller
     public function actionAjaxUserFunnelLively(){
         if(!Yii::app()->session['is_admin']) exit; // 没有权限
 
-        $stime = Yii::app()->request->getParam('stime', $this->stime);
-        $etime = Yii::app()->request->getParam('etime', $this->etime);
+        $start_time = Yii::app()->request->getParam('start_time', $this->start_time);
+        $end_time = Yii::app()->request->getParam('end_time', $this->end_time);
         //转换为 开始时间戳  和结束当天 凌晨时间戳
-        $stime = $stime?strtotime($stime):0;
-        $etime = $etime?strtotime($etime)+24*3600:time();
+        $start_time = $start_time?strtotime($start_time):0;
+        $end_time = $end_time?strtotime($end_time)+24*3600:time();
 
         $return['text'] = "活跃用户漏斗图"; //标题
         $return['subtext'] = ""; //副标题
@@ -445,7 +449,7 @@ class ImhgDataController extends Controller
         $DauCountAll = $logUserCountDB->queryAll();
         $userDau = 0;
         $lively_scale = 3/7; // 比例，一周内登录三次为活跃
-        $lively_login_num = floor(floor(($etime-$stime)/(24*3600))*$lively_scale); // 该段时间内达到登录次数，为活跃用户
+        $lively_login_num = floor(floor(($end_time-$start_time)/(24*3600))*$lively_scale); // 该段时间内达到登录次数，为活跃用户
         // 计算活跃用户
         for($i=0;$i<count($DauCountAll);$i++){
             if($DauCountAll[$i]['total'] >= $lively_login_num) $userDau++;
@@ -606,12 +610,12 @@ class ImhgDataController extends Controller
     public function actionAjaxActivityType(){
         if(!Yii::app()->session['is_admin']) exit; // 没有权限
         //获取开始结束时间  须转化为时间戳  对应数据库
-        $stime = Yii::app()->request->getParam('stime', $this->stime);
-        $etime = Yii::app()->request->getParam('etime', $this->etime);
+        $start_time = Yii::app()->request->getParam('start_time', $this->start_time);
+        $end_time = Yii::app()->request->getParam('end_time', $this->end_time);
 
         //转换为 开始时间戳  和结束当天 凌晨时间戳
-        $stime = $stime?strtotime($stime):0;
-        $etime = $etime?strtotime($etime)+24*3600:time();
+        $start_time = $start_time?strtotime($start_time):0;
+        $end_time = $end_time?strtotime($end_time)+24*3600:time();
 
         //查询hot字段排名前10的 活动主题
         $connection = Yii::app()->db->createCommand();
@@ -619,7 +623,7 @@ class ImhgDataController extends Controller
             ->select('SUM(eu.num) num1,e.type ')
             ->from(EventOrder::model()->tableName().' as eu')
             ->leftJoin(Event::model()->tableName().' as e', 'eu.event_id = e.event_id')
-            ->where('e.status=1 AND eu.ctime >'.$stime.' AND eu.ctime <'.$etime)
+            ->where('e.status=1 AND eu.ctime >'.$start_time.' AND eu.ctime <'.$end_time)
             ->group('e.type')
             ->order('num1 desc')
             ->queryAll();
@@ -683,12 +687,12 @@ class ImhgDataController extends Controller
         if(!Yii::app()->session['is_admin']) exit; // 没有权限
 
         //获取开始结束时间  须转化为时间戳  对应数据库
-        $stime = Yii::app()->request->getParam('stime', $this->stime);
-        $etime = Yii::app()->request->getParam('etime', $this->etime);
+        $start_time = Yii::app()->request->getParam('start_time', $this->start_time);
+        $end_time = Yii::app()->request->getParam('end_time', $this->end_time);
 
         //转换为 开始时间戳  和结束当天 凌晨时间戳
-        $stime = $stime?strtotime($stime):0;
-        $etime = $etime?strtotime($etime)+24*3600:time();
+        $start_time = $start_time?strtotime($start_time):0;
+        $end_time = $end_time?strtotime($end_time)+24*3600:time();
 
         //查询hot字段排名前10的 活动主题
         $connection = Yii::app()->db->createCommand();
@@ -696,7 +700,7 @@ class ImhgDataController extends Controller
             ->select('e.title,sum(eu.num) as num1')
             ->from(EventOrder::model()->tableName().' as eu')
             ->leftJoin(Event::model()->tableName().' as e', 'e.event_id = eu.event_id')
-            ->where('eu.ctime >'.$stime.' AND eu.ctime <'.$etime)
+            ->where('eu.ctime >'.$start_time.' AND eu.ctime <'.$end_time)
             ->limit(10)
             ->group('e.event_id')
             ->order('num1 desc')
@@ -733,12 +737,12 @@ class ImhgDataController extends Controller
         if(!Yii::app()->session['is_admin']) exit; // 没有权限
 
         //获取开始结束时间  须转化为年月生日数字  对应数据库数据
-        $stime = Yii::app()->request->getParam('stime', $this->stime);
-        $etime = Yii::app()->request->getParam('etime', $this->etime);
+        $start_time = Yii::app()->request->getParam('start_time', $this->start_time);
+        $end_time = Yii::app()->request->getParam('end_time', $this->end_time);
 
         //转换为 开始时间戳  和结束当天 凌晨时间戳
-        $stime = $stime?$stime:0;
-        $etime = $etime?date('Ymd',strtotime($etime)+(24*3600)):date('Ymd',time());
+        $start_time = $start_time?$start_time:0;
+        $end_time = $end_time?date('Ymd',strtotime($end_time)+(24*3600)):date('Ymd',time());
 
         //sql语句查询重定义 uri字段 模糊字段
         $sql = "SELECT SUM(times) total,CASE
@@ -753,7 +757,7 @@ class ImhgDataController extends Controller
 ELSE 'else'
  END
 
- FROM  imhg_api_count WHERE `day` BETWEEN ".$stime." AND ".$etime."  GROUP BY uri";
+ FROM  imhg_api_count WHERE `day` BETWEEN ".$start_time." AND ".$end_time."  GROUP BY uri";
         $connection = Yii::app()->db->createCommand($sql);
         $result = $connection->queryAll();
 //var_dump($result);exit;
@@ -837,17 +841,17 @@ ELSE 'else'
     private function dealTime($connection){
         if(!Yii::app()->session['is_admin']) exit; // 没有权限
 
-        $stime = Yii::app()->request->getParam('stime', $this->stime);
-        $etime = Yii::app()->request->getParam('etime', $this->etime);
+        $start_time = Yii::app()->request->getParam('start_time', $this->start_time);
+        $end_time = Yii::app()->request->getParam('end_time', $this->end_time);
 
-        if($stime){
-            $stime = strtotime($stime);
-            $connection->andWhere("ctime >= :stime", [':stime'=>$stime]);
+        if($start_time){
+            $start_time = strtotime($start_time);
+            $connection->andWhere("ctime >= :start_time", [':start_time'=>$start_time]);
         }
-        if($etime){
+        if($end_time){
             // 计算到当天24点
-            $etime = strtotime($etime)+24*3600;
-            $connection->andWhere("ctime <= :etime", [':etime'=>$etime]);
+            $end_time = strtotime($end_time)+24*3600;
+            $connection->andWhere("ctime <= :end_time", [':end_time'=>$end_time]);
         }
         return $connection;
     }
@@ -891,12 +895,12 @@ ELSE 'else'
     public function actionAjaxLocationWarm(){
         if(!Yii::app()->session['is_admin']) exit; // 没有权限
         //获取开始结束时间  须转化为年月生日数字  对应数据库数据
-        $stime = Yii::app()->request->getParam('stime', $this->stime);
-        $etime = Yii::app()->request->getParam('etime', $this->etime);
+        $start_time = Yii::app()->request->getParam('start_time', $this->start_time);
+        $end_time = Yii::app()->request->getParam('end_time', $this->end_time);
 
         //转换为 开始时间戳  和结束当天 凌晨时间戳
-        $stime = $stime?$stime:0;
-        $etime = $etime?date('Ymd',strtotime($etime)+(24*3600)):date('Ymd',time());
+        $start_time = $start_time?$start_time:0;
+        $end_time = $end_time?date('Ymd',strtotime($end_time)+(24*3600)):date('Ymd',time());
 
         //by lzm 增加认证用户筛选条件
         $userType = Yii::app()->request->getParam('type',0);
@@ -906,7 +910,7 @@ ELSE 'else'
         $connection = Yii::app()->db->createCommand();
         $connection->select('l.longitude,l.latitude')->from(Location::model()->tableName().' as l');
         $connection->leftJoin(User::model()->tableName().' as u', 'l.uid=u.uid');
-        $connection->where('u.last_login > '.strtotime($stime).' and u.last_login <'.strtotime($etime));
+        $connection->where('u.last_login > '.strtotime($start_time).' and u.last_login <'.strtotime($end_time));
         //by lzm 增加认证用户筛选条件
         if($userType){
             $connection->andWhere(" u.status >=2 ");
