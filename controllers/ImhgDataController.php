@@ -30,7 +30,7 @@ class ImhgDataController extends Controller
         return $this->render('index');
     }
 
-    public function actionBraTest(){
+    public function actionAjaxBraTest(){
         die('{"text":"\u603b\u91cf\u7edf\u8ba1","subtext":"","legend_data":["\u603b\u6570\u91cf"],"xAxis_data":["\u7528\u6237","\u6d3b\u52a8","\u6d77\u5f52\u5708","\u6d77\u8c08","\u521b\u4e1a\u9879\u76ee","\u7fa4\u7ec4"],"series":[{"name":"\u603b\u6570\u91cf","type":"bar","data":["352","27","850","37","4","0"]}]}');
     }
 

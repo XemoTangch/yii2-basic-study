@@ -30,4 +30,23 @@ class CommonAsset extends AssetBundle
     public $jsOptions = [
         'position' => View::POS_HEAD,
     ];  // 这是设置所有js放置的位置
+
+    /**
+     * 定义按需加载JS方法，注意加载顺序在最后
+     * @param $view object
+     * @param $js_file string
+     */
+    public static function addScript($view, $js_file) {
+        $view->registerJsFile($js_file, ['depends' => ['app\assets\CommonAsset'], 'position' => View::POS_HEAD]);
+    }
+
+    /**
+     * 定义按需加载css方法，注意加载顺序在最后
+     * @param $view object
+     * @param $css_file string
+     */
+    public static function addCss($view, $css_file) {
+        $view->registerCssFile($css_file, ['depends' => ['app\assets\CommonAsset'], 'position' => View::POS_HEAD]);
+    }
+
 }

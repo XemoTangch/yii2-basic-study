@@ -7,14 +7,21 @@
  * Desc:
  */
 
-$this->title = '运营数据统计';
+use yii\web\View;
+use yii\helpers\Html;
+use app\assets\CommonAsset;
 
-$this->registerJsFile('@web/imhg/js/echarts.min.js');
-$this->registerJsFile('@web/imhg/js/ecStat.min.js');
-$this->registerJsFile('@web/imhg/js/china.js');
-$this->registerJsFile('@web/imhg/js/world.js');
-$this->registerJsFile('@web/imhg/js/data.js');
+$this->title = '运营数据统计';
+CommonAsset::addCss($this, '@web/imhg/chart-data/js/bootstrap-datetimepicker.min.css');
+CommonAsset::addScript($this, '@web/imhg/chart-data/js/bootstrap-datetimepicker.min.js');
+
+$this->registerJsFile('@web/imhg/chart-data/js/echarts.min.js');
+$this->registerJsFile('@web/imhg/chart-data/js/ecStat.min.js');
+$this->registerJsFile('@web/imhg/chart-data/js/map/js/china.js');
+$this->registerJsFile('@web/imhg/chart-data/js/map/js/world.js');
+$this->registerJsFile('@web/imhg/chart-data/js/data.js');
 $this->registerJsFile('http://api.map.baidu.com/api?v=2.0&ak=jA8OGGeqTQlRtz4m95YGVez8UaEdLgXe');
+
 ?>
 
 <div class="wrap">
@@ -35,7 +42,7 @@ $this->registerJsFile('http://api.map.baidu.com/api?v=2.0&ak=jA8OGGeqTQlRtz4m95Y
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a id="AllNumber" class="getChart" href="javascript:;" chart-name="userLouDou">总数统计图</a></li>
+                    <li><a id="bra-test" class="getChart" href="javascript:;" chart-name="bar" chart-desc="总量统计可以查看某段时间内，注册用户、活动、海归圈、海谈和创业项目的总数。">总数统计图</a></li>
                     <li role="presentation" class="dropdown">
                         <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true" href="javascript:;">用户数据统计图<span class="caret"></a>
                         <ul class="dropdown-menu">
@@ -75,12 +82,36 @@ $this->registerJsFile('http://api.map.baidu.com/api?v=2.0&ak=jA8OGGeqTQlRtz4m95Y
         </div><!-- /.container-fluid -->
     </nav>
 
-    <div class="container">
-        <div class="row">
-            <div class="clo-sm-12">
-                <div id="chart-box">
-                    
+    <div class="container" style="margin-top: 55px;">
+        <div class="row" style="margin: 10px;">
+            <div class="col-sm-2">
+                <div class="input-group date form_date" data-date="" data-date-format="dd MM yyyy" data-link-field="dtp_input2" data-link-format="yyyy-mm-dd">
+                    <input class="form-control" size="16" type="text" value="" readonly>
+                    <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
                 </div>
+            </div>
+            <div class="col-sm-2">
+                <div class="input-group date form_date" data-date="" data-date-format="dd MM yyyy" data-link-field="dtp_input2" data-link-format="yyyy-mm-dd">
+                    <input class="form-control" size="16" type="text" value="" readonly>
+                    <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
+                </div>
+            </div>
+            <div class="col-sm-2"></div>
+            <div class="col-sm-2"></div>
+            <div class="col-sm-2"></div>
+            <div class="col-sm-2"></div>
+            <div class="col-sm-2"></div>
+            <div class="col-sm-2"></div>
+            <div class="col-sm-4 text-right">
+                <button class="btn btn-primary">刷新</button>
+                <button class="btn btn-warning">重置</button>
+            </div>
+        </div>
+
+        <div class="row" >
+            <div class="col-xs-12 jumbotron" style="padding: 24px 30px;margin: 0px;">
+                <p id="chart-desc" style="font-size: 16px;"></p>
+                <div id="chart-box" style="width: 100%;height:400px;"></div>
             </div>
         </div>
     </div>
@@ -90,33 +121,41 @@ $this->registerJsFile('http://api.map.baidu.com/api?v=2.0&ak=jA8OGGeqTQlRtz4m95Y
     $(function(){
         var window_height,window_width;
 
+        getWindowSize();
         // 窗口大小变化事件
         window.onresize = function(){
+            getWindowSize();
+        };
+        function getWindowSize(){
             window_height = document.documentElement.clientHeight;
             window_width = document.documentElement.clientWidth;
-//            console.info(window_width+' - '+window_height);
-        };
+        }
 
+        // 默认图表
+        setChart($('#bra-test'));
+        // 选择图表
         $('.getChart').on('click', function(){
-
+            
             // 小屏幕动作
             if(window_width < 768){
                 $('#mobile_btn').click();
             }
 
             var domObj = $(this);
-            setChart(domObj)
+            setChart(domObj);
 
         });
 
         // 创建图表
         function setChart(domObj, param){
-            if(!domObj || !chartName) return false;
+            if(!domObj) return false;
             param = param?param:'';
             var domId = domObj.attr('id'),
                 chartName = domObj.attr('chart-name'),
-                chart_box_id = 'chart-box'; // 图表容器
-                url = '/imhg-data/Ajax' + domId;
+                chart_box_id = 'chart-box', // 图表容器
+                url = '/imhg-data/ajax-' + domId,
+                chart_desc = domObj.attr('chart-desc');
+            $('#chart-desc').html(chart_desc);
             switch (chartName){
                 case 'bar': // 柱形图
                     setBar(chart_box_id, url, param);
@@ -141,5 +180,18 @@ $this->registerJsFile('http://api.map.baidu.com/api?v=2.0&ak=jA8OGGeqTQlRtz4m95Y
                     break;
             }
         }
+
+        // 时间选择
+        $('.form_date').datetimepicker({
+            weekStart: 1,
+            todayBtn:  1,
+            autoclose: 1,
+            todayHighlight: 1,
+            startView: 2,
+            minView: 2,
+            forceParse: 0,
+            format: 'yyyy/mm/dd',
+        });
+        
     });
 </script>
