@@ -20,9 +20,14 @@ $this->registerJsFile('@web/imhg/chart-data/js/ecStat.min.js');
 $this->registerJsFile('@web/imhg/chart-data/js/map/js/china.js');
 $this->registerJsFile('@web/imhg/chart-data/js/map/js/world.js');
 $this->registerJsFile('@web/imhg/chart-data/js/data.js');
-$this->registerJsFile('http://api.map.baidu.com/api?v=2.0&ak=jA8OGGeqTQlRtz4m95YGVez8UaEdLgXe');
+//$this->registerJsFile('http://api.map.baidu.com/api?v=2.0&ak=jA8OGGeqTQlRtz4m95YGVez8UaEdLgXe');
 
 ?>
+<style type="text/css">
+    .my-button {
+        
+    }
+</style>
 
 <div class="wrap">
     <nav class="navbar-inverse navbar-fixed-top navbar" id="navbar-homepage">
@@ -85,26 +90,36 @@ $this->registerJsFile('http://api.map.baidu.com/api?v=2.0&ak=jA8OGGeqTQlRtz4m95Y
     <div class="container" style="margin-top: 55px;">
         <div class="row" style="margin: 10px;">
             <div class="col-sm-2">
-                <div class="input-group date form_date" data-date="" data-date-format="dd MM yyyy" data-link-field="dtp_input2" data-link-format="yyyy-mm-dd">
-                    <input class="form-control" size="16" type="text" value="" readonly>
+                <div class="input-group date form_date">
+                    <input id="start-time" class="form-control" size="16" type="text" value="2017/11/05" readonly>
                     <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
                 </div>
             </div>
             <div class="col-sm-2">
-                <div class="input-group date form_date" data-date="" data-date-format="dd MM yyyy" data-link-field="dtp_input2" data-link-format="yyyy-mm-dd">
-                    <input class="form-control" size="16" type="text" value="" readonly>
+                <div class="input-group date form_date">
+                    <input id="end-time" class="form-control" size="16" type="text" value="2017/12/05" readonly>
                     <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
                 </div>
             </div>
-            <div class="col-sm-2"></div>
-            <div class="col-sm-2"></div>
-            <div class="col-sm-2"></div>
-            <div class="col-sm-2"></div>
-            <div class="col-sm-2"></div>
+            <div class="col-sm-2">
+                <select class="form-control" id="city_id">
+                    <option value="0" selected="selected">全部城市</option>
+                    <option value="2,52" >北京</option>
+                    <option value="25,321" >上海</option>
+                    <option value="76" >广州</option>
+                    <option value="77" >深圳</option>
+                    <option value="33,395" >香港</option>
+                    <option value="383" >杭州</option>
+                    <option value="322" >成都</option>
+                    <option value="220" >南京</option>
+                    <option value="180" >武汉</option>
+                    <option value="-1" >其他</option>
+                </select>
+            </div>
             <div class="col-sm-2"></div>
             <div class="col-sm-4 text-right">
-                <button class="btn btn-primary">刷新</button>
-                <button class="btn btn-warning">重置</button>
+                <button class="btn btn-primary my-button" id="refresh">刷新</button>
+                <button class="btn btn-warning my-button" id="reload">重置</button>
             </div>
         </div>
 
@@ -191,6 +206,18 @@ $this->registerJsFile('http://api.map.baidu.com/api?v=2.0&ak=jA8OGGeqTQlRtz4m95Y
             minView: 2,
             forceParse: 0,
             format: 'yyyy/mm/dd',
+        });
+
+        // 重置和刷新
+        $('#refresh').on('click', function(){
+            var start_time = $('#start-time').val(),
+                end_time = $('#end_time').val(),
+                city_id = $('#city_id').val();
+
+            
+        });
+        $('#reload').on('click', function(){
+            
         });
         
     });
