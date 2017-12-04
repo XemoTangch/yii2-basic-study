@@ -27,6 +27,15 @@ $this->registerJsFile('@web/imhg/chart-data/js/data.js');
     .my-button {
         
     }
+    .chart-search{
+        display: none;
+    }
+    #chart-search-btn{
+        display: none;
+    }
+    .margin-top-10{
+        margin-top: 10px;
+    }
 </style>
 
 <div class="wrap">
@@ -47,7 +56,7 @@ $this->registerJsFile('@web/imhg/chart-data/js/data.js');
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a id="bra-test" class="getChart" href="javascript:;" chart-name="bar" chart-desc="总量统计可以查看某段时间内，注册用户、活动、海归圈、海谈和创业项目的总数。">总数统计图</a></li>
+                    <li><a id="bra-test" class="getChart" href="javascript:;" chart-name="bar" chart-desc="总量统计可以查看某段时间内，注册用户、活动、海归圈、海谈和创业项目的总数。" chart-search="[1,2,3,4]">总数统计图</a></li>
                     <li role="presentation" class="dropdown">
                         <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true" href="javascript:;">用户数据统计图<span class="caret"></a>
                         <ul class="dropdown-menu">
@@ -88,20 +97,27 @@ $this->registerJsFile('@web/imhg/chart-data/js/data.js');
     </nav>
 
     <div class="container" style="margin-top: 55px;">
-        <div class="row" style="margin: 10px;">
-            <div class="col-sm-2">
+        <div class="row" style="margin-bottom: 10px;">
+            <div class="col-sm-2 chart-search margin-top-10" id="search1">
                 <div class="input-group date form_date">
                     <input id="start-time" class="form-control" size="16" type="text" value="2017/11/05" readonly>
                     <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
                 </div>
             </div>
-            <div class="col-sm-2">
+            <div class="col-sm-2 chart-search margin-top-10" id="search2">
                 <div class="input-group date form_date">
                     <input id="end-time" class="form-control" size="16" type="text" value="2017/12/05" readonly>
                     <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
                 </div>
             </div>
-            <div class="col-sm-2">
+            <div class="col-sm-2 chart-search margin-top-10" id="search3">
+                <select class="form-control" id="user_status">
+                    <option value="" selected="selected">所有用户</option>
+                    <option value="0" >普通用户</option>
+                    <option value="2" >认证用户</option>
+                </select>
+            </div>
+            <div class="col-sm-2 chart-search margin-top-10" id="search4">
                 <select class="form-control" id="city_id">
                     <option value="0" selected="selected">全部城市</option>
                     <option value="2,52" >北京</option>
@@ -113,11 +129,11 @@ $this->registerJsFile('@web/imhg/chart-data/js/data.js');
                     <option value="322" >成都</option>
                     <option value="220" >南京</option>
                     <option value="180" >武汉</option>
+                    <option value="396" >澳门</option>
                     <option value="-1" >其他</option>
                 </select>
             </div>
-            <div class="col-sm-2"></div>
-            <div class="col-sm-4 text-right">
+            <div class="col-sm-2 text-right margin-top-10" id="chart-search-btn">
                 <button class="btn btn-primary my-button" id="refresh">刷新</button>
                 <button class="btn btn-warning my-button" id="reload">重置</button>
             </div>
@@ -134,7 +150,10 @@ $this->registerJsFile('@web/imhg/chart-data/js/data.js');
 </div>
 <script type="application/javascript">
     $(function(){
-        var window_height,window_width;
+        // chart-search 1为开始时间，2为结束时间，3为用户状态，4为城市
+
+        var window_height,window_width,chart_height,domId,
+            default_start_time = '2017/11/05',default_end_time = '2017/12/4';
 
         getWindowSize();
         // 窗口大小变化事件
@@ -144,32 +163,33 @@ $this->registerJsFile('@web/imhg/chart-data/js/data.js');
         function getWindowSize(){
             window_height = document.documentElement.clientHeight;
             window_width = document.documentElement.clientWidth;
+            chart_height = window_height*0.65;
+            $('#chart-box').height(chart_height);
         }
 
         // 默认图表
         setChart($('#bra-test'));
         // 选择图表
         $('.getChart').on('click', function(){
-            
             // 小屏幕动作
             if(window_width < 768){
                 $('#mobile_btn').click();
             }
-
             var domObj = $(this);
             setChart(domObj);
-
         });
 
         // 创建图表
         function setChart(domObj, param){
             if(!domObj) return false;
             param = param?param:'';
-            var domId = domObj.attr('id'),
-                chartName = domObj.attr('chart-name'),
+            domId = domObj.attr('id');
+            var chartName = domObj.attr('chart-name'),
                 chart_box_id = 'chart-box', // 图表容器
                 url = '/imhg-data/ajax-' + domId,
-                chart_desc = domObj.attr('chart-desc');
+                chart_desc = domObj.attr('chart-desc'),
+                chart_search = domObj.attr('chart-search');
+            dealSearchForm(chart_search);
             $('#chart-desc').html(chart_desc);
             switch (chartName){
                 case 'bar': // 柱形图
@@ -195,6 +215,14 @@ $this->registerJsFile('@web/imhg/chart-data/js/data.js');
                     break;
             }
         }
+        function dealSearchForm(chart_search){
+            if(!chart_search) return false;
+            chart_search = JSON.parse(chart_search);
+            if(chart_search.length > 0) $('#chart-search-btn').show();
+            $.each(chart_search, function(k,v){
+                $('#search'+v).show();
+            });
+        }
 
         // 时间选择
         $('.form_date').datetimepicker({
@@ -212,12 +240,18 @@ $this->registerJsFile('@web/imhg/chart-data/js/data.js');
         $('#refresh').on('click', function(){
             var start_time = $('#start-time').val(),
                 end_time = $('#end_time').val(),
-                city_id = $('#city_id').val();
-
-            
+                user_status = $('#user_status').val(),
+                city_id = $('#city_id').val(),
+                param = {start_time:start_time, end_time:end_time, user_status:user_status, city_id:city_id};
+            setChart($('#'+domId), param);
         });
         $('#reload').on('click', function(){
-            
+            var param = [];
+            $('#start-time').val(default_start_time);
+            $('#end-time').val(default_end_time);
+            $('#user_status').val('');
+            $('#city_id').val(0);
+            setChart($('#'+domId), param);
         });
         
     });

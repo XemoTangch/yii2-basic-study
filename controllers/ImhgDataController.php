@@ -31,7 +31,18 @@ class ImhgDataController extends Controller
     }
 
     public function actionAjaxBraTest(){
-        die('{"text":"\u603b\u91cf\u7edf\u8ba1","subtext":"","legend_data":["\u603b\u6570\u91cf"],"xAxis_data":["\u7528\u6237","\u6d3b\u52a8","\u6d77\u5f52\u5708","\u6d77\u8c08","\u521b\u4e1a\u9879\u76ee","\u7fa4\u7ec4"],"series":[{"name":"\u603b\u6570\u91cf","type":"bar","data":["352","27","850","37","4","0"]}]}');
+        $start_time = Yii::$app->request->get('start_time', $this->start_time);
+        $end_time = Yii::$app->request->get('start_time', $this->end_time);
+        $city_id = Yii::$app->request->get('city_id', 0);
+        $status = Yii::$app->request->get('user_status', 0);
+
+        if($city_id){
+            die('{"text":"\u603b\u91cf\u7edf\u8ba1","subtext":"","legend_data":["\u603b\u6570\u91cf"],"xAxis_data":["\u7528\u6237","\u6d3b\u52a8","\u6d77\u5f52\u5708","\u6d77\u8c08","\u521b\u4e1a\u9879\u76ee","\u7fa4\u7ec4"],"series":[{"name":"\u603b\u6570\u91cf","type":"bar","data":["352","27","850","37","4","0"]}]}');
+        }
+        if($status){
+            die('{"text":"\u603b\u91cf\u7edf\u8ba1","subtext":"","legend_data":["\u603b\u6570\u91cf"],"xAxis_data":["\u7528\u6237","\u6d3b\u52a8","\u6d77\u5f52\u5708","\u6d77\u8c08","\u521b\u4e1a\u9879\u76ee","\u7fa4\u7ec4"],"series":[{"name":"\u603b\u6570\u91cf","type":"bar","data":["152","727","150","370","400","100"]}]}');
+        }
+        die('{"text":"\u603b\u91cf\u7edf\u8ba1","subtext":"","legend_data":["\u603b\u6570\u91cf"],"xAxis_data":["\u7528\u6237","\u6d3b\u52a8","\u6d77\u5f52\u5708","\u6d77\u8c08","\u521b\u4e1a\u9879\u76ee","\u7fa4\u7ec4"],"series":[{"name":"\u603b\u6570\u91cf","type":"bar","data":["152","227","450","137","34","50"]}]}');
     }
 
     /*
