@@ -23,7 +23,7 @@ class ObjectController extends Controller
         $this->layout = false;
     }
 
-    public function actionTest(){
+    public function actionObjectEmpty(){
         if((object) array()){
             echo 'if((object) array()) is true';
         }else{
@@ -34,6 +34,12 @@ class ObjectController extends Controller
             echo 'if(empty(object) array()) is true';
         }else{
             echo 'if(empty(object) array()) is false';
+        }
+        echo '<br/>';
+        if(json_encode((object) array()) == '{}'){
+            echo 'if(json_encode((object) array()) == \'{}\') is true';
+        }else{
+            echo 'if(json_encode((object) array()) == \'{}\') is false';
         }
         echo '<br/>';
     }
