@@ -27,4 +27,12 @@ class TestController extends Controller
         echo phpinfo();
     }
 
+    public function actionDebugTest(){
+        $a = 111;
+        $a = 222;
+        $a = 333;
+
+        echo $a;
+    }
+
 }
