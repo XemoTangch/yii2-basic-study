@@ -2,9 +2,9 @@
 /**
  * Author: jiangm
  * Email: jmphper@foxmail.com
- * Date: 2017/10/25
- * Time: 13:51
- * Desc: 字符串处理测试
+ * Date: 2017/12/8
+ * Time: 11:26
+ * Desc:
  */
 
 namespace app\controllers;
@@ -12,7 +12,7 @@ namespace app\controllers;
 use Yii;
 use yii\web\Controller;
 
-class StringController extends Controller
+class ArrayController extends Controller
 {
     /**
      * 构造函数
@@ -24,18 +24,11 @@ class StringController extends Controller
     }
 
     public function actionTest(){
-        echo '"000"和0 ';
-        if('000' == 0){
-            echo '相等';
+        if(array()){
+            echo 'if(array()) is true';
         }else{
-            echo '不相等';
+            echo 'if(array()) is false';
         }
         echo '<br/>';
-
-    }
-
-    public function actionLength(){
-        $str = Yii::$app->request->get('str','');
-        echo strlen($str);
     }
 }
