@@ -35,4 +35,19 @@ class TestController extends Controller
         echo $a;
     }
 
+    public function actionMyIp(){
+        $agent = Yii::$app->request->getUserAgent();
+        $host = Yii::$app->request->getUserHost();
+        $ip = Yii::$app->request->getUserIp();
+
+        echo $agent;
+        echo '<br/>';
+        echo $host;
+        echo '<br/>';
+        echo $ip;
+        echo '<br/>';
+    }
+
+
+
 }
