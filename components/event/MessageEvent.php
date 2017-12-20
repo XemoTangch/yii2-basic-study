@@ -45,7 +45,7 @@ class MessageEvent extends Event
      * @param $event
      */
     public function onDealUserInfo($event){
-        echo '处理用户信息';
+        echo '处理用户信息2';
         echo '<pre>';
         print_r($event->data);
         echo '</pre>';
