@@ -9,10 +9,13 @@
 
 namespace app\controllers;
 
-use app\components\event\MessageEvent;
 use Yii;
 use yii\base\Controller;
+use yii\base\Event;
+
+use app\components\event\MessageEvent;
 use app\components\helper\MessageHelper;
+use app\models\Message;
 
 class EventController extends Controller{
 
@@ -28,11 +31,32 @@ class EventController extends Controller{
         $message_event = new MessageEvent();
 
         // 附加事件处理器（绑定事件）
-        $message_helper->on($message_helper::EVENT_MESSAGE_SEND,[$message_event, 'onMessageSend']);
+        $message_helper->on($message_helper::EVENT_MESSAGE_SEND, [$message_event, 'onMessageSend']);
         // 最后参数含义：是否将新的事件处理程序添加到现有处理程序列表的末尾。如果是false，新处理程序将在现有处理程序列表的开头插入。
         $message_helper->on($message_helper::EVENT_MESSAGE_SEND, [$message_event, 'onDealUserInfo'], ['user_info'=>'user info ...']);
         $message_helper->on($message_helper::EVENT_MESSAGE_SEND, [$message_event, 'onMessageLog'], ['data'=>'data ...'], false);
 
+        // 附加类级别事件处理器（绑定类级别事件）
+        Event::on($message_helper->className(), $message_helper::EVENT_MESSAGE_SEND, [$message_event, 'onDealUserInfo'], ['user_info'=>'user info 2 ...']);
+
         $message_helper->send('trigger send time');
+    }
+
+    public function actionChangeMessage(){
+        $message_helper = new MessageHelper();
+        $message_event = new MessageEvent();
+
+        // 附加类级别事件处理器（绑定类级别事件）
+        Event::on($message_helper->className(), $message_helper::EVENT_MESSAGE_SEND, [$message_event, 'onDealUserInfo'], ['user_info'=>'user info 3 ...']);
+        $message_helper->changeMessage('trigger send time');
+    }
+
+    /**
+     * 触发类级别事件
+     */
+    public function actionMessage1(){
+        $message = new Message();
+        $message->messageEventOn1();
+        $message->messageEventTrigger1('123456789');
     }
 }
