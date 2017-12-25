@@ -154,7 +154,7 @@
 </body>
 <script type="application/javascript">
     $(function(){
-        // 页面数据  no3
+        // 页面数据  no4
         var data = {
             knowledge_point: {
                 content:[
