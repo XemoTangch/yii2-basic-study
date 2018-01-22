@@ -36,6 +36,11 @@ class StringController extends Controller
 
     public function actionLength(){
         $str = Yii::$app->request->get('str','');
+        echo '<h3>strlen</h3>';
         echo strlen($str);
+        echo '<br/>';
+        echo '<h3>mb_strlen</h3>';
+        echo mb_strlen($str, 'utf-8');
+        echo '<br/>';
     }
 }
