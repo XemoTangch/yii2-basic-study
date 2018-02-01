@@ -43,4 +43,8 @@ class StringController extends Controller
         echo mb_strlen($str, 'utf-8');
         echo '<br/>';
     }
+
+    public function actionPassword(){
+        echo md5(md5('123456789qwer').'1234');
+    }
 }

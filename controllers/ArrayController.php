@@ -30,5 +30,7 @@ class ArrayController extends Controller
             echo 'if(array()) is false';
         }
         echo '<br/>';
+
     }
+
 }
