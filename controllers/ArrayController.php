@@ -31,6 +31,20 @@ class ArrayController extends Controller
         }
         echo '<br/>';
 
+        echo '<h3>用加号合并数组</h3>';
+        $array1 = ['a'=>1,'b'=>2,'c'=>3];
+        $array2 = ['d'=>4,'e'=>5,'f'=>6];
+        echo '<pre>';
+        print_r($array1+$array2);
+        echo '</pre>';
+        echo '<br/>';
+        $array1 = [1,2,3];
+        $array2 = [4,5,6];
+        echo '<pre>';
+        print_r($array1+$array2);
+        echo '</pre>';
+        echo '<br/>';
+
     }
 
 }
