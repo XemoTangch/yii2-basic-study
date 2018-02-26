@@ -12,6 +12,8 @@ namespace app\controllers;
 use Yii;
 use yii\web\Controller;
 
+use app\components\MyComponent;
+
 class TestController extends Controller
 {
     /**
@@ -46,6 +48,29 @@ class TestController extends Controller
         echo '<br/>';
         echo $ip;
         echo '<br/>';
+    }
+
+    /**
+     * 组件的使用
+     */
+    public function actionComponent(){
+        // 首先需要将组件加入组件配置列表
+        // 方法一
+        $component = new MyComponent(1, 2, ['prop1' => 3, 'prop2' => 4]);
+        echo '<pre>';
+        print_r($component);
+        echo '</pre>';
+
+        // 方法二
+//        $component = \Yii::createObject([
+//            'class' => MyComponent::className(),
+//            'prop1' => 3,
+//            'prop2' => 4,
+//        ], [1, 2]);
+//        echo '<pre>';
+//        print_r($component);
+//        echo '</pre>';
+
     }
 
 

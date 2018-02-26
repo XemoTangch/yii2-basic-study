@@ -52,7 +52,9 @@ $config = [
             'rules' => [
             ],
         ],
-
+        'myComponent' => [
+            'class' => 'app\components\MyComponent'
+        ],
     ],
     'params' => $params,
 ];
