@@ -57,6 +57,13 @@ $config = [
         ],
     ],
     'params' => $params,
+    'modules' => [
+        // 将模块配置到主体配置中才可以访问模块
+        'front' => [
+            'class' => 'app\modules\front\frontModule',
+            // ... 模块其他配置 ...
+        ],
+    ],
 ];
 
 if (YII_ENV_DEV) {
