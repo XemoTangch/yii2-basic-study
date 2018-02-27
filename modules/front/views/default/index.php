@@ -1,3 +1,7 @@
+<?php
+use app\components\widget\HelloWidget;
+?>
+
 <div class="front-default-index">
     <h1><?= $this->context->action->uniqueId ?></h1>
     <p>
@@ -10,3 +14,7 @@
         <code><?= __FILE__ ?></code>
     </p>
 </div>
+<h2>自定义小部件使用</h2>
+<?= HelloWidget::widget(['message' => 'Good morning']) ?>
+
+
