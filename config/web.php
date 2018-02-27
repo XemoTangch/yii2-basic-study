@@ -7,7 +7,7 @@ $config = [
     'id' => 'basic',
     'basePath' => dirname(__DIR__),
     'bootstrap' => ['log'],
-    'language' => 'zh_CN',
+    'language' => 'zh-CN',
     'name' => 'LOVE STUDY LOVE WORK',
     'aliases' => [
         '@bower' => '@vendor/bower-asset',
@@ -68,12 +68,15 @@ $config = [
 
 if (YII_ENV_DEV) {
     // configuration adjustments for 'dev' environment
-    $config['bootstrap'][] = 'debug';
-    $config['modules']['debug'] = [
-        'class' => 'yii\debug\Module',
-        // uncomment the following to add your IP if you are not connecting from localhost.
-        'allowedIPs' => ['127.0.0.1', '::1', '192.168.33.1'],
-    ];
+    // 配置文件中 YII_ENV 为 dev ，YII_DEBUG 为 true 时
+    if(YII_DEBUG){
+        $config['bootstrap'][] = 'debug';
+        $config['modules']['debug'] = [
+            'class' => 'yii\debug\Module',
+            // uncomment the following to add your IP if you are not connecting from localhost.
+            'allowedIPs' => ['127.0.0.1', '::1', '192.168.33.1'],
+        ];
+    }
 
     $config['bootstrap'][] = 'gii';
     $config['modules']['gii'] = [
