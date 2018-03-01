@@ -9,6 +9,7 @@ use yii\web\Controller;
  */
 class DefaultController extends Controller
 {
+    public $layout = '/normal'; // 加上斜杠表示使用最外层views中的布局，默认使用模块中的布局
     /**
      * Renders the index view for the module
      * @return string
@@ -16,5 +17,10 @@ class DefaultController extends Controller
     public function actionIndex()
     {
         return $this->render('index');
+    }
+
+
+    public function actionVue(){
+        return $this->render('vue');
     }
 }

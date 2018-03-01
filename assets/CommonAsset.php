@@ -19,6 +19,7 @@ class CommonAsset extends AssetBundle
     public $css = [
     ];
     public $js = [
+        'https://cdn.jsdelivr.net/npm/vue@2.5.13/dist/vue.js',
     ];
     public $depends = [
         'yii\bootstrap\BootstrapPluginAsset', // bootstrap
