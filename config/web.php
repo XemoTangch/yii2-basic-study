@@ -58,6 +58,7 @@ $config = [
         ],
         // 自定义资源包
         'assetManager' => [
+//            'linkAssets' => true, // 资源管理器会创建一个符号链接到要发布的资源包源路径， 这比拷贝文件方式快并能确保发布的资源一直为最新的
             'bundles' => [
                 'yii\web\JqueryAsset' => [
                     'sourcePath' => null,   // 一定不要发布该资源
