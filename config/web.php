@@ -46,6 +46,7 @@ $config = [
             ],
         ],
         'db' => $db,
+        // url管理
         'urlManager' => [
             'enablePrettyUrl' => true, // 选择true，要在配置好域名后才能正常使用
             'showScriptName' => false, // 选择false，要在服务配置中重写路由
@@ -54,6 +55,17 @@ $config = [
         ],
         'myComponent' => [
             'class' => 'app\components\MyComponent'
+        ],
+        // 自定义资源包
+        'assetManager' => [
+            'bundles' => [
+                'yii\web\JqueryAsset' => [
+                    'sourcePath' => null,   // 一定不要发布该资源
+                    'js' => [
+                        '//apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js',
+                    ]
+                ],
+            ],
         ],
     ],
     'params' => $params,
