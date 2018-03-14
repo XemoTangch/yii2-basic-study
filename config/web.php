@@ -76,6 +76,14 @@ $config = [
             'class' => 'app\modules\demo\demoModule',
             // ... 模块其他配置 ...
         ],
+        // 前台模块
+        'front' => [
+            'class' => 'app\modules\front\frontModule',
+        ],
+        // 后台模块
+        'backend' => [
+            'class' => 'app\module\backend\backendModule',
+        ],
     ],
 ];
 

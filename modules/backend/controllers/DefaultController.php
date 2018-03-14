@@ -1,11 +1,11 @@
 <?php
 
-namespace app\modules\front\controllers;
+namespace app\modules\backend\controllers;
 
 use yii\web\Controller;
 
 /**
- * Default controller for the `front` module
+ * Default controller for the `backend` module
  */
 class DefaultController extends Controller
 {
@@ -15,6 +15,6 @@ class DefaultController extends Controller
      */
     public function actionIndex()
     {
-        $html = '<div class="alert alert-info" role="alert">页面加载中，请稍后。。。</div>';
+        return $this->render('index');
     }
 }
