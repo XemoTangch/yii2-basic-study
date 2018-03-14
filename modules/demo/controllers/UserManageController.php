@@ -7,7 +7,7 @@
  * Desc: 用户管理控制器
  */
 
-namespace app\modules\front\controllers;
+namespace app\modules\demo\controllers;
 
 use yii\web\Controller;
 use yii\helpers\ArrayHelper;

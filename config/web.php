@@ -72,8 +72,8 @@ $config = [
     'params' => $params,
     'modules' => [
         // 将模块配置到主体配置中才可以访问模块
-        'front' => [
-            'class' => 'app\modules\front\frontModule',
+        'demo' => [
+            'class' => 'app\modules\demo\demoModule',
             // ... 模块其他配置 ...
         ],
     ],
