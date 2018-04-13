@@ -171,5 +171,15 @@ EOD
         echo md5(md5('123456789qwer').'1234');
     }
 
-
+    public function actionStrpos(){
+        $res = strpos(strtolower('iPhone10,3'), strtolower('iPhone10'));
+        if($res !== false){
+            echo '有<br/>';
+        }else{
+            echo '没有<br/>';
+        }
+        echo '<pre>';
+        print_r($res);
+        echo '</pre>';
+    }
 }
