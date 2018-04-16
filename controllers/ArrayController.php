@@ -47,4 +47,21 @@ class ArrayController extends Controller
 
     }
 
+    /**
+     * 数组
+     * 1. 数组的key值会有些强制转换：
+     * 包含有合法整型值的字符串会被转换为整型。
+     * 浮点数也会被转换为整型，意味着其小数部分会被舍去
+     * 布尔值也会被转换成整型。
+     * Null 会被转换为空字符串
+     * 数组和对象不能被用为键名
+     *
+     * 2. 同键名的则使用最后一个值
+     * 3. PHP 数组可以同时含有 integer 和 string 类型的键名，因为 PHP 实际并不区分索引数组和关联数组。
+     * 4. 
+     */
+    public function actionIndex(){
+        
+    }
+
 }
