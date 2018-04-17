@@ -9,6 +9,7 @@
 
 namespace app\controllers;
 
+use app\models\User;
 use Yii;
 use yii\web\Controller;
 
@@ -73,6 +74,48 @@ class TestController extends Controller
 
     }
 
+    public function actionAuthentication(){
+        // 获取用户信息
+        $identity = User::findIdentity(100);
+        // 登录
+        $login_res = Yii::$app->user->login($identity);
+        echo '<pre>';
+        print_r($login_res);
+        print_r(Yii::$app->user->identity);
+        echo '</pre>';
+    }
+
+
+    public function actionAuthOne(){
+        // 获取访问用户信息
+        $user = Yii::$app->user->identity;
+        if(!$user) Yii::$app->end();
+
+        echo '<pre>';
+        print_r($_SESSION);
+        print_r($_COOKIE);
+        echo '</pre>';
+
+        echo '欢迎您，'.$user->username;
+    }
+
+    public function actionAuthLoginOut(){
+        // 登出
+        $login_out_res = Yii::$app->user->logout();
+        echo '<pre>';
+        print_r($login_out_res);
+        echo '</pre>';
+
+        if($login_out_res){
+            echo '<pre>';
+            print_r(Yii::$app->user->isGuest);
+            print_r(Yii::$app->user->identity);
+            echo '</pre>';
+            echo '登出成功';
+        }else{
+            echo '登出失败';
+        }
+    }
 
 
 }
