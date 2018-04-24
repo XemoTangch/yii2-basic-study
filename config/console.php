@@ -21,6 +21,10 @@ $config = [
             ],
         ],
         'db' => $db,
+        // 权限管理
+        'authManager' => [
+            'class' => 'yii\rbac\DbManager', // 使用数据库管理配置文件
+        ],
     ],
     'params' => $params,
     /*
@@ -30,6 +34,7 @@ $config = [
         ],
     ],
     */
+
 ];
 
 if (YII_ENV_DEV) {

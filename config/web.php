@@ -68,6 +68,11 @@ $config = [
                 ],
             ],
         ],
+
+        // 权限管理
+        'authManager' => [
+            'class' => 'yii\rbac\PhpManager', // 使用数据库管理配置文件
+        ],
     ],
     'params' => $params,
     'modules' => [
@@ -83,6 +88,19 @@ $config = [
         // 后台模块
         'backend' => [
             'class' => 'app\module\backend\backendModule',
+        ],
+        // 后台管理
+        'admin' => [
+            'class' => 'mdm\admin\Module',
+            'layout' => 'left-menu',
+        ],
+    ],
+
+    'as access' => [
+        'class' => 'mdm\admin\components\AccessControl',
+        'allowActions' => [
+            'site/*',
+            'admin/*',
         ],
     ],
 ];
