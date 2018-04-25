@@ -18,6 +18,7 @@
         <label for="password">密码：</label>
         <input type="password" class="form-control" name="password" placeholder="请输入密码" required="required" />
     </div>
+    <!-- csrf 防止跨站请求伪造 -->
     <input name="_csrf" type="hidden" id="_csrf" value="<?= Yii::$app->request->csrfToken ?>">
     <button type="submit" class="btn btn-default">Submit</button>
 </form>

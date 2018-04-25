@@ -11,6 +11,7 @@ namespace app\controllers;
 
 use Yii;
 use yii\web\Controller;
+use app\models\User;
 
 class AuthenticationController extends Controller
 {
@@ -51,16 +52,54 @@ class AuthenticationController extends Controller
     public function actionLogin(){
         echo '登录页面<br/>';
 
+        if(!Yii::$app->user->isGuest){
+            echo '您已经登录成功，<a href="/authentication/index">去首页</a><br/>';
+            Yii::$app->end();
+        }
+
         if(Yii::$app->request->isPost){
             // 登录操作
             $data = Yii::$app->request->post();
-            echo '<pre>';
-            print_r($data);
-            echo '</pre>';
-        }else{
-            return $this->render('login');
+            $user_identity = User::findIdentityByUsername($data['username']);
+            if($user_identity){
+
+                // 判断密码是否正确
+                if($data['password'] == $user_identity['password']){
+                    Yii::$app->user->login($user_identity, 60);
+                    echo '<div class="alert alert-success" role="alert">登录成功<a href="/authentication/index">去首页</a></div><br/>';
+                }else{
+                    echo '<div class="alert alert-warning" role="alert">密码错误</div><br/>';
+                }
+                
+            }else{
+                echo '<div class="alert alert-warning" role="alert">该用户不存在</div><br/>';
+            }
         }
 
+        return $this->render('login');
+
+    }
+
+    public function actionUser(){
+        echo '用户页面，需要登录，没有登录提示登录或跳转至登录页面<br/>';
+        if(Yii::$app->user->getIsGuest()){
+            echo '<div class="alert alert-warning" role="alert">抱歉请先注册或登录！<a href="'.Yii::$app->user->loginUrl.'">去登录</a></div><br/>';
+            Yii::$app->end();
+        }
+
+        /** @var $user_identity User */
+        $user_identity = Yii::$app->user->getIdentity();
+        echo '欢迎你'.$user_identity->username.'，<a href="/authentication/logout">退出登录</a><br/>';
+
+        echo '<pre>';
+        print_r(Yii::$app->user->getIdentity());
+        print_r($_COOKIE);
+        echo '</pre>';
+    }
+
+    public function actionLogout(){
+        Yii::$app->user->logout();
+        echo '<div class="alert alert-success" role="alert">登出成功<a href="/authentication/index">去首页</a></div><br/>';
     }
 
 }

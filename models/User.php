@@ -51,6 +51,19 @@ class User extends \yii\db\ActiveRecord implements \yii\web\IdentityInterface
     }
 
     /**
+     * @param $username
+     * @return mixed
+     */
+    public static function findIdentityByUsername($username){
+        foreach(self::$users as $user){
+            if($user['username'] == $username){
+                return new static($user);
+            }
+        }
+        return false;
+    }
+
+    /**
      * Finds user by username
      *
      * @param string $username
