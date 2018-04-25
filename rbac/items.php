@@ -28,4 +28,11 @@ return [
             '/demo/user-manage/create',
         ],
     ],
+    'user' => [
+        'type' => 1,
+        'children' => [
+            '/demo/user-manage/index',
+            '/demo/user-manage/detail',
+        ],
+    ],
 ];

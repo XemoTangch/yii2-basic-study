@@ -2,6 +2,7 @@
 
 $params = require __DIR__ . '/params.php';
 $db = require __DIR__ . '/db.php';
+$as_access = require __DIR__.'/as_access.php';
 
 $config = [
     'id' => 'basic',
@@ -25,6 +26,7 @@ $config = [
         'user' => [
             'identityClass' => 'app\models\User',
             'enableAutoLogin' => true,
+            'loginUrl' => 'authentication/login',
         ],
         'errorHandler' => [
             'errorAction' => 'site/error',
@@ -71,7 +73,7 @@ $config = [
 
         // 权限管理
         'authManager' => [
-            'class' => 'yii\rbac\PhpManager', // 使用数据库管理配置文件
+            'class' => 'yii\rbac\DbManager', // 使用数据库管理配置文件
         ],
     ],
     'params' => $params,
@@ -96,13 +98,7 @@ $config = [
         ],
     ],
 
-    'as access' => [
-        'class' => 'mdm\admin\components\AccessControl',
-        'allowActions' => [
-            'site/*',
-            'admin/*',
-        ],
-    ],
+    'as access' => $as_access,
 ];
 
 if (YII_ENV_DEV) {
