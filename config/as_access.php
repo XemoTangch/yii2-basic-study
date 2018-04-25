@@ -13,7 +13,6 @@ return [
         'site/*',
         'front/*',
         'demo/*',
-        'backend/*',
-        '*'
+        'authentication/*',
     ],
 ];
