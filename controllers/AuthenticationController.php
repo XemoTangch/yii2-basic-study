@@ -12,9 +12,27 @@ namespace app\controllers;
 use Yii;
 use yii\web\Controller;
 use app\models\User;
+use yii\filters\AccessControl;
 
 class AuthenticationController extends Controller
 {
+
+    public function behaviors()
+    {
+        return [
+            'access' => [
+                'class' => AccessControl::class,
+                'only' => ['logout'],
+                'rules' => [
+                    [
+                        'allow' => true,
+                        'actions' => ['logout'],
+                        'roles' => ['@'],
+                    ],
+                ],
+            ],
+        ];
+    }
 
     /**
      * 构造函数
@@ -93,6 +111,9 @@ class AuthenticationController extends Controller
 
         echo '<pre>';
         print_r(Yii::$app->user->getIdentity());
+        echo 'SESSION<br/>';
+        print_r($_SESSION);
+        echo 'COOKIE<br/>';
         print_r($_COOKIE);
         echo '</pre>';
     }

@@ -89,7 +89,7 @@ $config = [
         ],
         // 后台模块
         'backend' => [
-            'class' => 'app\module\backend\backendModule',
+            'class' => 'app\modules\backend\backendModule',
         ],
         // 后台管理
         'admin' => [
