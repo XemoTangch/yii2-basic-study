@@ -10,7 +10,7 @@
 namespace app\modules\backend\models;
 
 use Yii;
-use \yii\web\IdentityInterface;
+use yii\web\IdentityInterface;
 
 /**
  * This is the model class for table "{{%admin}}".
@@ -28,9 +28,29 @@ use \yii\web\IdentityInterface;
 class Admin extends \app\models\Admin implements IdentityInterface
 {
 
+    /**
+     * 使用用户名获取用户信息
+     * @param $username
+     * @return mixed
+     */
+    public static function findIdentityByUserName($username){
+        $user_id = static::find()
+            ->select('id')
+            ->where(['username'=>$username])
+            ->one();
+        return static::getOne($user_id);
+    }
 
+    /**
+     * 从缓存中获取一条数据详情
+     * @param $id
+     * @return array
+     */
+    public function getOne($id){
+        $user_info = static::findOne($id);
+        return $user_info;
+    }
 
-    /** 实现认证接口的方法 start */
 
     /**
      * 根据给到的ID查询身份。
@@ -40,14 +60,13 @@ class Admin extends \app\models\Admin implements IdentityInterface
      */
     public static function findIdentity($id)
     {
-        return static::findOne($id);
+        return static::getOne($id);
     }
 
     /**
      * 根据 token 查询身份。
      *
      * @param string $token 被查询的 token
-     * @param string $type 令牌的类型
      * @return IdentityInterface|null 通过 token 得到的身份对象
      */
     public static function findIdentityByAccessToken($token, $type = null)
@@ -56,8 +75,6 @@ class Admin extends \app\models\Admin implements IdentityInterface
     }
 
     /**
-     * 获取用户的ID
-     *
      * @return int|string 当前用户ID
      */
     public function getId()
@@ -66,8 +83,6 @@ class Admin extends \app\models\Admin implements IdentityInterface
     }
 
     /**
-     * 获取用户的cookie认证秘钥
-     *
      * @return string 当前用户的（cookie）认证密钥
      */
     public function getAuthKey()
@@ -76,8 +91,6 @@ class Admin extends \app\models\Admin implements IdentityInterface
     }
 
     /**
-     * 验证cookie的认证秘钥
-     *
      * @param string $authKey
      * @return boolean if auth key is valid for current user
      */
@@ -85,7 +98,5 @@ class Admin extends \app\models\Admin implements IdentityInterface
     {
         return $this->getAuthKey() === $authKey;
     }
-
-    /** 实现认证接口的方法 end */
 
 }

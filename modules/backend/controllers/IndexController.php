@@ -10,13 +10,14 @@
 
 namespace app\modules\backend\controllers;
 
-use yii\web\Controller;
+use Yii;
 use app\modules\backend\models\Admin;
+use app\modules\backend\components\AdminBaseController;
 
 /**
  * Default controller for the `backend` module
  */
-class IndexController extends Controller
+class IndexController extends AdminBaseController
 {
     public $layout = '/normal';
     /**
@@ -25,9 +26,8 @@ class IndexController extends Controller
      */
     public function actionIndex()
     {
-        $admin = Admin::find()->where(['id'=>1])->one();
         echo '<pre>';
-        print_r($admin);
+        print_r(Yii::$app->user->identity);
         echo '</pre>';
         return $this->render('index');
     }

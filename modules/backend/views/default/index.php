@@ -24,7 +24,7 @@ AdminAsset::addScript($this, 'adminAssets/js/login.js');
                     </div>
                     <form class="m-login__form m-form" action="<?=Url::to(['backend/default/login'])?>">
                         <div class="form-group m-form__group">
-                            <input class="form-control m-input"   type="text" placeholder="username" name="请输入用户名" autocomplete="off">
+                            <input class="form-control m-input"   type="text" placeholder="请输入用户名" name="username" autocomplete="off">
                         </div>
                         <div class="form-group m-form__group">
                             <input class="form-control m-input m-login__form-input--last" type="password" placeholder="请输入密码" name="password">
@@ -37,11 +37,11 @@ AdminAsset::addScript($this, 'adminAssets/js/login.js');
                                     <span></span>
                                 </label>
                             </div>
-                            <div class="col m--align-right m-login__form-right">
+                            <!--<div class="col m--align-right m-login__form-right">
                                 <a href="javascript:;" id="m_login_forget_password" class="m-link">
                                     忘记密码 ?
                                 </a>
-                            </div>
+                            </div>-->
                         </div>
                         <div class="m-login__form-action">
                             <button id="m_login_signin_submit" class="btn btn-focus m-btn m-btn--pill m-btn--custom m-btn--air m-login__btn m-login__btn--primary">
