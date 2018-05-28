@@ -98,7 +98,7 @@ $config = [
         ],
     ],
 
-    'as access' => $as_access,
+//    'as access' => $as_access,
 ];
 
 if (YII_ENV_DEV) {
