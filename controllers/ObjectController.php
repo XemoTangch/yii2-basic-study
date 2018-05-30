@@ -23,6 +23,9 @@ class ObjectController extends Controller
         $this->layout = false;
     }
 
+    /**
+     * 判断对象是否为空
+     */
     public function actionObjectEmpty(){
         if((object) array()){
             echo 'if((object) array()) is true';
@@ -43,4 +46,12 @@ class ObjectController extends Controller
         }
         echo '<br/>';
     }
+
+    /**
+     * 获取类的路径
+     */
+    public function actionClassName(){
+        echo self::class;
+    }
+
 }
