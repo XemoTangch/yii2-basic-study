@@ -14,5 +14,6 @@ return [
         'front/*',
         'demo/*',
         'authentication/*',
+        'admin/*',
     ],
 ];
