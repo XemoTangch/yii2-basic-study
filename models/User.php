@@ -89,6 +89,7 @@ class User extends \yii\db\ActiveRecord implements \yii\web\IdentityInterface
     }
 
     /**
+     * 开启cookie自动登录需要
      * @inheritdoc
      */
     public function getAuthKey()
@@ -97,6 +98,7 @@ class User extends \yii\db\ActiveRecord implements \yii\web\IdentityInterface
     }
 
     /**
+     * 开启cookie自动登录需要
      * @inheritdoc
      */
     public function validateAuthKey($authKey)

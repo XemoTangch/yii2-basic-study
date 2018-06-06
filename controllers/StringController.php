@@ -225,4 +225,14 @@ EOD
         print_r($res);
         echo '</pre>';
     }
+
+    public function actionChinese(){
+        $str = '你好';
+        if(preg_match('/^([\x{4e00}-\x{9fa5}]||[\x{FE30}-\x{FFA0}]|\r|\n)+$/u', $str)>0){
+            echo '全是中文和中文标点';
+        }elseif(preg_match('/^([\x{4e00}-\x{9fa5}]||[\x{FE30}-\x{FFA0}]|\r|\n)+$/u', $str)>0){
+            echo '含有中文和中文标点';
+        }
+    }
+
 }

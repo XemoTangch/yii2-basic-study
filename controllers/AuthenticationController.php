@@ -12,9 +12,27 @@ namespace app\controllers;
 use Yii;
 use yii\web\Controller;
 use app\models\User;
+use yii\filters\AccessControl;
 
 class AuthenticationController extends Controller
 {
+
+    public function behaviors()
+    {
+        return [
+            'access' => [
+                'class' => AccessControl::class,
+                'only' => ['logout'],
+                'rules' => [
+                    [
+                        'allow' => true,
+                        'actions' => ['logout'],
+                        'roles' => ['@'],
+                    ],
+                ],
+            ],
+        ];
+    }
 
     /**
      * 构造函数
@@ -93,6 +111,9 @@ class AuthenticationController extends Controller
 
         echo '<pre>';
         print_r(Yii::$app->user->getIdentity());
+        echo 'SESSION<br/>';
+        print_r($_SESSION);
+        echo 'COOKIE<br/>';
         print_r($_COOKIE);
         echo '</pre>';
     }
@@ -100,6 +121,24 @@ class AuthenticationController extends Controller
     public function actionLogout(){
         Yii::$app->user->logout();
         echo '<div class="alert alert-success" role="alert">登出成功<a href="/authentication/index">去首页</a></div><br/>';
+    }
+
+
+    public function actionPasswordHash(){
+        $password = Yii::$app->request->get();
+        $password_hash = password_hash($password['password'], PASSWORD_DEFAULT);
+        echo '<pre>';
+        print_r($password_hash); //123456 $2y$10$vSDbqs.HS7GRwUq1LVQj7uV3iEz9a1JW11P8suf42H0Lx4VbyN/wG
+        echo '</pre>';
+    }
+
+    public function actionPasswordVerify(){
+        $password = Yii::$app->request->get();
+        if(password_verify($password['password'], $password['password_hash'])){
+            echo '密码正确<br/>';
+        }else{
+            echo '密码错误<br/>';
+        }
     }
 
 }

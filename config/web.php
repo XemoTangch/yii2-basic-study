@@ -24,7 +24,7 @@ $config = [
             'class' => 'yii\caching\FileCache',
         ],
         'user' => [
-            'identityClass' => 'app\models\User',
+            'identityClass' => 'app\models\Login',
             'enableAutoLogin' => true,
             'loginUrl' => '/authentication/login',
         ],
@@ -89,7 +89,7 @@ $config = [
         ],
         // 后台模块
         'backend' => [
-            'class' => 'app\module\backend\backendModule',
+            'class' => 'app\modules\backend\backendModule',
         ],
         // 后台管理
         'admin' => [
@@ -98,7 +98,7 @@ $config = [
         ],
     ],
 
-    'as access' => $as_access,
+//    'as access' => $as_access,
 ];
 
 if (YII_ENV_DEV) {
