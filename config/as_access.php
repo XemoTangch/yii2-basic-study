@@ -14,10 +14,7 @@ $as_access = [
         'front/*',
         'demo/*',
         'authentication/*',
-<<<<<<< HEAD
-=======
         'backend/*',
->>>>>>> 94b024297ac5982931a05c101e384c0f1390bac1
         'admin/*',
     ],
 ];
