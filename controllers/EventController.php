@@ -37,7 +37,7 @@ class EventController extends Controller{
         $message_helper->on($message_helper::EVENT_MESSAGE_SEND, [$message_event, 'onMessageLog'], ['data'=>'data ...'], false);
 
         // 附加类级别事件处理器（绑定类级别事件）
-        Event::on($message_helper->className(), $message_helper::EVENT_MESSAGE_SEND, [$message_event, 'onDealUserInfo'], ['user_info'=>'user info 2 ...']);
+        Event::on(MessageHelper::class, $message_helper::EVENT_MESSAGE_SEND, [$message_event, 'onDealUserInfo'], ['user_info'=>'user info 2 ...']);
 
         $message_helper->send('trigger send time');
     }
@@ -47,7 +47,7 @@ class EventController extends Controller{
         $message_event = new MessageEvent();
 
         // 附加类级别事件处理器（绑定类级别事件）
-        Event::on($message_helper->className(), $message_helper::EVENT_MESSAGE_SEND, [$message_event, 'onDealUserInfo'], ['user_info'=>'user info 3 ...']);
+        Event::on(MessageHelper::class, $message_helper::EVENT_MESSAGE_SEND, [$message_event, 'onDealUserInfo'], ['user_info'=>'user info 3 ...']);
         $message_helper->changeMessage('trigger send time');
     }
 
