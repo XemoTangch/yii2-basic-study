@@ -67,13 +67,15 @@ class StringToolsController extends Controller
         $date = date('Y-m-d H:i:s', time());
         if(Yii::$app->request->isPost){
             $param = trim(Yii::$app->request->post('param', ''));
-            $time = strtotime($param);
-            // 参数为日期
-            if($time){
-                $date = $param;
-            }else{ // 参数为时间戳
-                $date = date('Y-m-d H:i:s', $param);
-                $time = $param;
+            if($param){
+                $time = strtotime($param);
+                // 参数为日期
+                if(!preg_match('/^[0-9]{10,}$/', $param)){
+                    $date = $param;
+                }else{ // 参数为时间戳
+                    $date = date('Y-m-d H:i:s', $param);
+                    $time = $param;
+                }
             }
         }
         return $this->render('time', [
@@ -84,7 +86,8 @@ class StringToolsController extends Controller
     }
 
     public function actionTestOne(){
-        echo 'testOne';
+        $res = 'aaa';
+        var_dump((integer)$res);
     }
 
 
