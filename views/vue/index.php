@@ -10,3 +10,4 @@
 /* @var $this yii\web\View */
 $this->title = 'vue 学习';
 ?>
+<h1>vue 学习</h1>
