@@ -23,7 +23,8 @@
         "cebe/markdown": "~1.0.0",
         "cebe/markdown-latex": "~1.0",
         "twbs/bootstrap": "4.0.0",
-        "mdmsoft/yii2-admin": "~2.0"
+        "mdmsoft/yii2-admin": "~2.0",
+        "jaeger/querylist": "dev-master"
     },
     "require-dev": {
         "yiisoft/yii2-debug": "~2.0.0",

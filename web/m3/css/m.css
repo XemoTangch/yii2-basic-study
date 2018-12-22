@@ -1,0 +1,113 @@
+@charset "utf-8";
+/*--顶部--*/
+html {font-size: 62.5%;/*10 ÷ 16 × 100% = 62.5%*/}
+body{font:1em/180% HeitiSC, Helvetica, sans-serif; color:#333333;}
+a:link{text-decoration:none;}
+a:hover{text-decoration:none;}
+a:active{text-decoration:none;}
+a,label,input{color:#303030;text-decoration:none;outline:none;hide-focus:expression(this.hideFocus=true);}
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,input,textarea,p,blockquote,th,td{margin:0;padding:0;}
+img{border:0px;}
+i,em{font-style:normal}
+ul{margin:0px;padding:0px;list-style:none;}
+.clear{clear:both; height:1px; margin-top:-1px; overflow:hidden;}
+.hh5{clear:both;height:6px;font-size:6px}
+.right{float:right}
+.left{float:left;}
+body{max-width:750px; margin:0 auto; background:#090818;}
+
+.main1{
+    position: relative;
+}
+.background_img{
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+.index_button{
+    max-width:750px;
+    top: 65%;
+    position: absolute;
+    margin: 0 auto;
+}
+.index_button_center{
+    width: 70%;
+    margin: 0 auto;
+}
+.index_button_img{
+    width: 100%;
+    display: block;
+    margin-bottom: 15px;
+}
+
+
+.zs_apply{
+    max-width:750px;
+    position: absolute;
+    top: 59%;
+    margin: 0 auto;
+}
+.zs_apply h1{
+    font-family: 微软雅黑;
+    color: #5F5D5E;
+    margin-bottom: 24px;
+    margin-left: 10%;
+    font-size: 22px;
+}
+.submit{
+    width: 35%;
+    margin: 10px auto;
+}
+.submit img{
+    width: 100%;
+    display: block;
+}
+
+.zs_form_item{
+    width: 80%;
+    margin: 0 auto;
+}
+.zs_form_name{
+    float: left;
+    color: #5F5D5E;
+    font-size:13px;
+    font-weight: 600;
+    font-family: 微软雅黑;
+    width: 50%;
+    /* 多出文本省略 */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.zs_form_input{
+    float: right;
+    width: 50%;
+}
+.zs_form_input input{
+    width: 100%;
+    border:none;
+    padding: 7px 5px;
+    margin-bottom: 8px;
+    border-radius: 5px;
+    font-size: 13px;
+    font-family: 微软雅黑;
+}
+
+
+.zs_form_radio{
+    margin: 6px 0px;
+    font-size: 12px;
+    color: #5F5D5E;
+    line-height: 12px;
+}
+.zs_form_radio input{
+    display: inline-block;
+    width: 20px;
+}
+.zs_form_text textarea{
+    width: 100%;
+    border: none;
+    resize: none;
+    border-radius: 5px;
+    margin-top: 5px;
+}

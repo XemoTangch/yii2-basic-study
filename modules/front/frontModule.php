@@ -5,12 +5,14 @@ namespace app\modules\front;
 /**
  * front module definition class
  */
-class frontModule extends \yii\base\Module
+class FrontModule extends \yii\base\Module
 {
     /**
      * @inheritdoc
      */
     public $controllerNamespace = 'app\modules\front\controllers';
+
+    public $layout = false;
 
     /**
      * @inheritdoc
@@ -20,5 +22,6 @@ class frontModule extends \yii\base\Module
         parent::init();
 
         // custom initialization code goes here
+        \Yii::configure($this, require(__DIR__ . '/config/config.php'));
     }
 }

@@ -9,10 +9,10 @@ use yii\helpers\Url;
 $this->title = '海归人才专场招聘会';
 ?>
 <div class="content">
-    <img class="none01" src="<?=Url::to('@web/front/images/index_01v2.png');?>">
-    <img class="none01" src="<?=Url::to('@web/front/images/index_06v1.png');?>">
-    <a id="apply" ><img class="none01" src="<?=Url::to('@web/front/images/index_03v1.png');?>"></a>
-    <a href="http://a.app.qq.com/o/simple.jsp?pkgname=com.imhaigui.android" ><img class="none01" src="<?=Url::to('@web/front/images/index_04v1.png');?>"></a>
+    <img class="none01" src="<?=Url::to('@web/front/images/index_01.png');?>">
+    <img class="none01" src="<?=Url::to('@web/front/images/index_02.png');?>">
+    <a id="apply" ><img class="none01" src="<?=Url::to('@web/front/images/index_03.png');?>"></a>
+    <a href="http://a.app.qq.com/o/simple.jsp?pkgname=com.imhaigui.android" ><img class="none01" src="<?=Url::to('@web/front/images/index_04.png');?>"></a>
 </div>
 <script src="<?=Url::to('@web/front/js/swipe.js');?>"></script>
 <script src="<?=Url::to('@web/front/js/cookie.js');?>"></script>
@@ -37,7 +37,7 @@ $this->title = '海归人才专场招聘会';
                             break;
                         case 200:
                             layer.open({content: '验证成功',skin: 'msg',time: 5000});
-                            setTimeout(window.location.href = '<?=Url::toRoute('jobfair/homepage')?>',9000);
+                            setTimeout(window.location.href = '<?=Url::toRoute('jobfair/homepage2')?>',9000);
                             break;
                         case 1113:
                             window.location.href = '<?=Url::toRoute('jobfair/applyinfo2')?>';
