@@ -91,6 +91,10 @@ $config = [
         'backend' => [
             'class' => 'app\modules\backend\backendModule',
         ],
+        // 接口
+        'api' => [
+            'class' => 'app\modules\api\apiModule',
+        ],
         // 后台管理
         'admin' => [
             'class' => 'mdm\admin\Module',

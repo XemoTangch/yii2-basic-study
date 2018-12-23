@@ -30,6 +30,11 @@ class TestController extends Controller
 
     }
 
+    public function actionHsz(){
+        $this->layout = false;
+        return $this->render('hsz');
+    }
+
     /**
      * 构造函数
      */
