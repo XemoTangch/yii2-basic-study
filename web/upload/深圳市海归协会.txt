@@ -1,0 +1,797 @@
+<?php
+
+/**
+ * @var $data array 数据
+ */
+
+?>
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>深圳市海归协会</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta name="renderer" content="webkit">
+    <link rel="stylesheet" href="/static/html/test/css/apply.css">
+    <link href="<?=Yii::app()->request->consoleStaticUrl('/css/font-awesome-4.7.0.min.css');?>" rel="stylesheet" type="text/css"/>
+</head>
+<body class="cn win sld_cn" style="background-color: rgb(244, 245, 240);">
+
+<form class="handleForm" method="post" enctype="multipart/form-data">
+    <div class="wrapper">
+        <div class="main" style="width: 750px;">
+            <div class="header" style="background-color: rgb(254, 254, 254); height: auto; min-height: 59px;">
+                <div class="imhg_headerInfo" style="padding-top:0px" tabindex="1">
+                    <div class="h_headline" style="text-align:center;font-size:24px;color:#595656;margin-bottom: 10px;">
+                        <span style="font-weight: 600;"><?=$data['title']?></span>
+                    </div>
+                    <div class="h_description" style="text-align:center;font-size:12px;color:#595656;">
+                        <span>入会申请表</span>
+                    </div>
+                    <div class="clearB"></div>
+                </div>
+            </div>
+            <div class="body" style="background-color: rgb(255, 255, 255);">
+                <div>
+                    <div class="imhg_componentWrapper">
+                        <div class="imhg_component imhg_staticComponent staticPic"  style="padding-top:5px;padding-bottom:5px;">
+                            <div class="imhgc_pictureWrapper images-1 layout-1 padding_left30_right30">
+                                <div class="imhgc_pictureImage">
+                                    <div class="imhgc_piWrapper">
+                                        <img src="<?=$data['cover']?>" class="imhgc_piImg" style="cursor:default;" width="100%">
+                                    </div>
+                                </div>
+                                <div class="clearB">
+                                </div>
+                            </div>
+                            <p class="imhgc_picDescribe padding_left30_right30" style="line-height:1.4;font-size:12px;font-weight:normal;color:#919191;margin-top: 16px;">
+                                <span>深圳市海外留学归国人员协会（简称：深圳市海归协会；英文shenzhen overseas chinese returnees association）成立于2013年12月19日，深圳市海归协会是全国首家经民政机关批准注册成立的以海归为个体的协会，主要是由在深圳工作或生活的具海外留学经历、特别是年轻一代的海外留学归国人员自愿组成，独立自主开展活动的非盈利性社会团体。</span>
+                            </p>
+                        </div>
+                        <div class="imhg_component imhg_staticComponent separator" >
+                            <p class="imhgc_title imhgc_title_item" style="line-height:1.4;font-size:14px;font-weight:normal;color:#919191;" >
+                                <span>基本信息</span>
+                            </p>
+                            <hr class="imhgc_separatorHr undefined">
+                        </div>
+                        <div class="imhg_component name" >
+                            <div class="imhg_componentText">
+                                <p class="imhgc_title" style="line-height:1.4;font-size:14px;font-weight:normal;color:#919191;" >
+                                    <span>
+                                    <span>姓名</span>
+                                    </span>
+                                    <span class="imhgc_required" tabindex="-1" aria-label="(必填)">*</span>
+                                    <span></span>
+                                </p>
+                            </div>
+                            <div class="imhg_componentBody">
+                                <div class="imhgc_content imhgc_widthCp" style="width:80%;">
+                                    <span class="aria-placeholder"  aria-label="."></span>
+                                    <div class="imhgc_input has-icon" style="height:28px;line-height:1.4;font-size:12px;padding-left:22px;">
+                                        <i class="fa fa-user imhgi_icon"></i>
+                                        <input class="imhgi_input aria-content" tabindex="1" name="n" type="text" spellcheck="false" value="" style="font-size:12px;line-height:1.4;" autocomplete="off">
+                                    </div>
+                                    <div class="clearB"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="imhg_component input" >
+                            <div class="imhg_componentText">
+                                <p class="imhgc_title" style="line-height:1.4;font-size:14px;font-weight:normal;color:#919191;" >
+                                    <span>
+                                    <span>英文名</span>
+                                    </span>
+                                    <span></span>
+                                </p>
+                            </div>
+                            <div class="imhg_componentBody">
+                                <div class="imhgc_content imhgc_widthCp" style="width:80%;">
+                                    <span class="aria-placeholder"  aria-label=".">
+                                    </span>
+                                    <div class="imhgc_input" style="height:28px;line-height:1.4;font-size:12px;">
+                                        <input class="imhgi_input aria-content" tabindex="1"  aria-required="0" type="text" spellcheck="false" autocomplete="off" value="" style="font-size:12px;line-height:1.4;">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="imhg_component gender" >
+                            <div class="imhg_componentText">
+                                <p class="imhgc_title" style="line-height:1.4;font-size:14px;font-weight:normal;color:#919191;" >
+                                    <span>
+                                    <span>性别</span>
+                                    </span>
+                                    <span class="imhgc_required" tabindex="-1" aria-label="(必填)">*</span>
+                                    <span></span>
+                                </p>
+                            </div>
+                            <div class="imhg_componentBody">
+                                <ul class="imhgc_content aria-content layout-1" role="radiogroup" tabindex="1" >
+                                    <li class="imhgc_optionsLi aria-content" tabindex="1" role="radio" aria-checked="false" aria-disabled="false" aria-label="先生" >
+                                        <p class="imhgc_optionVal gender" style="min-height:26px;line-height:1.4;font-size:12px;font-weight:normal;color:#919191;">
+                                            <svg class="imhgc_optionSvg" aria-checked="false" aria-disabled="false" style="padding:1px;padding-top:3px;pointer-events:visible;" xml:space="preserve" viewbox="0 0 30 30" preserveaspectratio="xMinYMin meet">
+                                        <circle fill="#FFFFFF" stroke="currentColor" stroke-width="2" cx="15" cy="15" r="14">
+                                        </circle>
+                                        </svg>
+                                            <span class="imhgc_optionLabel"><span>先生</span></span>
+                                        </p>
+                                    </li>
+                                    <li class="imhgc_optionsLi aria-content" tabindex="1" role="radio" aria-checked="false" aria-disabled="false" aria-label="女士" >
+                                        <p class="imhgc_optionVal gender" style="min-height:26px;line-height:1.4;font-size:12px;font-weight:normal;color:#919191;">
+                                            <svg class="imhgc_optionSvg" aria-checked="false" aria-disabled="false" style="padding:1px;padding-top:3px;pointer-events:visible;" xml:space="preserve" viewbox="0 0 30 30" preserveaspectratio="xMinYMin meet"><circle fill="#FFFFFF" stroke="currentColor" stroke-width="2" cx="15" cy="15" r="14"></circle></svg><span class="imhgc_optionLabel"><span>女士</span></span>
+                                        </p>
+                                    </li>
+                                    <li class="clearB"></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="imhg_component input" >
+                            <div class="imhg_componentText">
+                                <p class="imhgc_title" style="line-height:1.4;font-size:14px;font-weight:normal;color:#919191;" >
+                                    <span><span>民族</span></span><span class="imhgc_required" tabindex="-1" aria-label="(必填)">*</span><span></span>
+                                </p>
+                            </div>
+                            <div class="imhg_componentBody">
+                                <div class="imhgc_content imhgc_widthCp" style="width:80%;">
+                                    <span class="aria-placeholder"  aria-label="."></span>
+                                    <div class="imhgc_input" style="height:28px;line-height:1.4;font-size:12px;">
+                                        <input class="imhgi_input aria-content" tabindex="1"  aria-required="1" type="text" spellcheck="false" autocomplete="off" value="" style="font-size:12px;line-height:1.4;">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="imhg_component multiLevel" >
+                            <div class="imhg_componentText">
+                                <p class="imhgc_title" style="line-height:1.4;font-size:14px;font-weight:normal;color:#919191;" >
+                                    <span><span>籍贯</span></span><span class="imhgc_required" tabindex="-1" aria-label="(必填)">*</span><span></span>
+                                </p>
+                            </div>
+                            <div class="imhg_componentBody">
+                                <div class="imhgc_mlContent">
+                                    <select class="imhgc_select imhgc_mlItem" name="area[province]" >
+                                        <option value="">请选择省份</option>
+                                    </select>
+                                    <select class="imhgc_select imhgc_mlItem" name="area[city]" >
+                                        <option value="">请选择省份</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="imhg_component dateTime_date" >
+                            <div class="imhg_componentText">
+                                <p class="imhgc_title" style="line-height:1.4;font-size:14px;font-weight:normal;color:#919191;" >
+                                    <span><span>出生年月</span></span><span class="imhgc_required" tabindex="-1" aria-label="(必填)">*</span><span></span>
+                                </p>
+                            </div>
+                            <div class="imhg_componentBody">
+                                <div class="imhgc_content imhgc_widthCp" style="width:80%;">
+                                    <div class="imhgc_datetime" name="input_calendar_dropdown">
+                                        <div class="imhgc_input has-icon" style="height:28px;line-height:1.4;font-size:12px;padding-left:22px;">
+                                            <i class="fa fa-calendar imhgi_icon"></i>
+                                            <input class="imhgi_input aria-content" tabindex="0" type="text" spellcheck="false" style="font-size:12px;line-height:1.4;" autocomplete="off">
+                                        </div>
+                                        <!-- 需要时间选择器 -->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="imhg_component input" >
+                            <div class="imhg_componentText">
+                                <p class="imhgc_title" style="line-height:1.4;font-size:14px;font-weight:normal;color:#919191;" >
+                                    <span><span>身份证号码</span></span><span class="imhgc_required" tabindex="-1" aria-label="(必填)">*</span><span></span>
+                                </p>
+                            </div>
+                            <div class="imhg_componentBody">
+                                <div class="imhgc_content imhgc_widthCp" style="width:80%;">
+                                    <span class="aria-placeholder"  aria-label="."></span>
+                                    <div class="imhgc_input" style="height:28px;line-height:1.4;font-size:12px;">
+                                        <input class="imhgi_input aria-content" tabindex="1"  aria-required="1" type="text" spellcheck="false" autocomplete="off" value="" style="font-size:12px;line-height:1.4;">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="imhg_component input" >
+                            <div class="imhg_componentText">
+                                <p class="imhgc_title" style="line-height:1.4;font-size:14px;font-weight:normal;color:#919191;" >
+                                    <span><span>兴趣爱好</span></span><span class="imhgc_required" tabindex="-1" aria-label="(必填)">*</span><span></span>
+                                </p>
+                            </div>
+                            <div class="imhg_componentBody">
+                                <div class="imhgc_content imhgc_widthCp" style="width:80%;">
+                                    <span class="aria-placeholder"  aria-label="."></span>
+                                    <div class="imhgc_input" style="height:28px;line-height:1.4;font-size:12px;">
+                                        <input class="imhgi_input aria-content" tabindex="1"  aria-required="1" type="text" spellcheck="false" autocomplete="off" value="" style="font-size:12px;line-height:1.4;">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="imhg_component imhg_staticComponent separator" >
+                            <div class="imhg_componentBorder">
+                            </div>
+                            <p class="imhgc_title imhgc_title_item" style="line-height:1.4;font-size:14px;font-weight:normal;color:#919191;" >
+                                <span>联系方式</span>
+                            </p>
+                            <hr class="imhgc_separatorHr undefined">
+                        </div>
+                        <div class="imhg_component inputMulti" >
+                            <div class="imhg_componentText">
+                                <p class="imhgc_title" style="line-height:1.4;font-size:14px;font-weight:normal;color:#919191;" >
+                                    <span><span>手机</span></span><span class="imhgc_required" tabindex="-1" aria-label="(必填)">*</span><span></span>
+                                </p>
+                            </div>
+                            <div class="imhg_componentBody">
+                                <div class="imhgc_content imhgc_widthCp" style="width:80%;">
+                                    <span class="aria-placeholder"  aria-label="."></span>
+                                    <div class="imhgc_imItem">
+                                        <div class="imhgc_input has-icon" style="height:28px;line-height:1.4;font-size:12px;padding-left:22px;">
+                                            <i class="fa fa-mobile imhgi_icon" style="font-size: 24px;"></i>
+                                            <input class="imhgi_input aria-content" tabindex="1" type="text" spellcheck="false" autocomplete="off"  value="" style="font-size:12px;line-height:1.4;">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="imhg_component inputMulti" >
+                            <div class="imhg_componentText">
+                                <p class="imhgc_title" style="line-height:1.4;font-size:14px;font-weight:normal;color:#919191;" >
+                                    <span><span>固话</span></span><span></span>
+                                </p>
+                                <p class="imhgc_describe" style="line-height:1.4;font-size:12px;font-weight:normal;color:#919191;" >
+                                    <span><span>请填写区号，如0755-83215830</span></span><span></span>
+                                </p>
+                            </div>
+                            <div class="imhg_componentBody">
+                                <div class="imhgc_content imhgc_widthCp" style="width:80%;">
+                                    <span class="aria-placeholder"  aria-label="."></span>
+                                    <div class="imhgc_imItem">
+                                        <div class="imhgc_input has-icon" style="height:28px;line-height:1.4;font-size:12px;padding-left:22px;">
+                                            <i class="fa fa-phone imhgi_icon"></i>
+                                            <input class="imhgi_input aria-content" tabindex="1" type="text" spellcheck="false" autocomplete="off"  value="" style="font-size:12px;line-height:1.4;">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="imhg_component inputMulti" >
+                            <div class="imhg_componentText">
+                                <p class="imhgc_title" style="line-height:1.4;font-size:14px;font-weight:normal;color:#919191;" >
+                                    <span><span>传真</span></span><span></span>
+                                </p>
+                                <p class="imhgc_describe" style="line-height:1.4;font-size:12px;font-weight:normal;color:#919191;" >
+                                    <span><span>如没有可不填</span></span><span></span>
+                                </p>
+                            </div>
+                            <div class="imhg_componentBody">
+                                <div class="imhgc_content imhgc_widthCp" style="width:80%;">
+                                    <span class="aria-placeholder"  aria-label="."></span>
+                                    <div class="imhgc_imItem">
+                                        <div class="imhgc_input has-icon" style="height:28px;line-height:1.4;font-size:12px;padding-left:22px;">
+                                            <i class="fa fa-print imhgi_icon"></i>
+                                            <input class="imhgi_input aria-content" tabindex="1" type="text" spellcheck="false" autocomplete="off"  value="" style="font-size:12px;line-height:1.4;">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="imhg_component inputMulti" >
+                            <div class="imhg_componentText">
+                                <p class="imhgc_title" style="line-height:1.4;font-size:14px;font-weight:normal;color:#919191;" >
+                                    <span><span>E-mail</span></span><span class="imhgc_required" tabindex="-1" aria-label="(必填)">*</span><span></span>
+                                </p>
+                            </div>
+                            <div class="imhg_componentBody">
+                                <div class="imhgc_content imhgc_widthCp" style="width:80%;">
+                                    <span class="aria-placeholder"  aria-label="."></span>
+                                    <div class="imhgc_imItem">
+                                        <div class="imhgc_input has-icon" style="height:28px;line-height:1.4;font-size:12px;padding-left:22px;">
+                                            <i class="fa fa-envelope-o imhgi_icon"></i>
+                                            <input class="imhgi_input aria-content" tabindex="1" type="text" spellcheck="false" autocomplete="off"  value="" style="font-size:12px;line-height:1.4;">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="imhg_component input" >
+                            <div class="imhg_componentText">
+                                <p class="imhgc_title" style="line-height:1.4;font-size:14px;font-weight:normal;color:#919191;" >
+                                    <span><span>微信号</span></span><span class="imhgc_required" tabindex="-1" aria-label="(必填)">*</span><span></span>
+                                </p>
+                            </div>
+                            <div class="imhg_componentBody">
+                                <div class="imhgc_content imhgc_widthCp" style="width:80%;">
+                                    <span class="aria-placeholder"  aria-label="."></span>
+                                    <div class="imhgc_input" style="height:28px;line-height:1.4;font-size:12px;">
+                                        <input class="imhgi_input aria-content" tabindex="1"  aria-required="1" type="text" spellcheck="false" autocomplete="off" value="" style="font-size:12px;line-height:1.4;">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="imhg_component input" >
+                            <div class="imhg_componentText">
+                                <p class="imhgc_title" style="line-height:1.4;font-size:14px;font-weight:normal;color:#919191;" >
+                                    <span><span>通信地址</span></span><span class="imhgc_required" tabindex="-1" aria-label="(必填)">*</span><span></span>
+                                </p>
+                            </div>
+                            <div class="imhg_componentBody">
+                                <div class="imhgc_content imhgc_widthCp" style="width:80%;">
+                                    <span class="aria-placeholder"  aria-label="."></span>
+                                    <div class="imhgc_input" style="height:28px;line-height:1.4;font-size:12px;">
+                                        <input class="imhgi_input aria-content" tabindex="1"  aria-required="1" type="text" spellcheck="false" autocomplete="off" value="" style="font-size:12px;line-height:1.4;">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="imhg_component input" >
+                            <div class="imhg_componentText">
+                                <p class="imhgc_title" style="line-height:1.4;font-size:14px;font-weight:normal;color:#919191;" >
+                                    <span><span>邮编</span></span><span></span>
+                                </p>
+                            </div>
+                            <div class="imhg_componentBody">
+                                <div class="imhgc_content imhgc_widthCp" style="width:80%;">
+                                    <span class="aria-placeholder"  aria-label="."></span>
+                                    <div class="imhgc_input" style="height:28px;line-height:1.4;font-size:12px;">
+                                        <input class="imhgi_input aria-content" tabindex="1"  aria-required="0" type="text" spellcheck="false" autocomplete="off" value="" style="font-size:12px;line-height:1.4;">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="imhg_component imhg_staticComponent separator" >
+                            <div class="imhg_componentBorder">
+                            </div>
+                            <p class="imhgc_title imhgc_title_item" style="line-height:1.4;font-size:14px;font-weight:normal;color:#919191;" >
+                                <span>政治背景</span>
+                            </p>
+                            <hr class="imhgc_separatorHr undefined">
+                            <p class="imhgc_describe" style="line-height:1.4;font-size:12px;font-weight:normal;color:#919191;" >
+                                <span><span>如果无党派不用填</span></span><span></span>
+                            </p>
+                        </div>
+                        <div class="imhg_component input" >
+                            <div class="imhg_componentText">
+                                <p class="imhgc_title" style="line-height:1.4;font-size:14px;font-weight:normal;color:#919191;" >
+                                    <span><span>党派</span></span><span></span>
+                                </p>
+                            </div>
+                            <div class="imhg_componentBody">
+                                <div class="imhgc_content imhgc_widthCp" style="width:80%;">
+                                    <span class="aria-placeholder"  aria-label="."></span>
+                                    <div class="imhgc_input" style="height:28px;line-height:1.4;font-size:12px;">
+                                        <input class="imhgi_input aria-content" tabindex="1"  aria-required="0" type="text" spellcheck="false" autocomplete="off" value="" style="font-size:12px;line-height:1.4;">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="imhg_component input" >
+                            <div class="imhg_componentText">
+                                <p class="imhgc_title" style="line-height:1.4;font-size:14px;font-weight:normal;color:#919191;" >
+                                    <span><span>加入该党派时间</span></span><span></span>
+                                </p>
+                            </div>
+                            <div class="imhg_componentBody">
+                                <div class="imhgc_content imhgc_widthCp" style="width:80%;">
+                                    <span class="aria-placeholder"  aria-label="."></span>
+                                    <div class="imhgc_input" style="height:28px;line-height:1.4;font-size:12px;">
+                                        <input class="imhgi_input aria-content" tabindex="1"  aria-required="0" type="text" spellcheck="false" autocomplete="off" value="" style="font-size:12px;line-height:1.4;">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="imhg_component imhg_staticComponent separator" >
+                            <div class="imhg_componentBorder">
+                            </div>
+                            <p class="imhgc_title imhgc_title_item" style="line-height:1.4;font-size:14px;font-weight:normal;color:#919191;" >
+                                <span>入会渠道</span>
+                            </p>
+                            <hr class="imhgc_separatorHr undefined">
+                        </div>
+                        <div class="imhg_component radio" >
+                            <div class="imhg_componentText">
+                                <p class="imhgc_title" style="line-height:1.4;font-size:14px;font-weight:normal;color:#919191;" >
+                                    <span><span>请问您是通过什么渠道了解到协会？</span></span><span class="imhgc_required" tabindex="-1" aria-label="(必填)">*</span><span></span>
+                                </p>
+                            </div>
+                            <div class="imhg_componentBody">
+                                <ul class="imhgc_content aria-content layout-1" role="radiogroup" tabindex="1" >
+                                    <li class="imhgc_optionsLi aria-content" tabindex="1" role="radio" aria-checked="false" aria-disabled="false" aria-label="新媒体：微信/微博" >
+                                        <p class="imhgc_optionVal radio" style="min-height:26px;line-height:1.4;font-size:12px;font-weight:normal;color:#919191;">
+                                            <svg class="imhgc_optionSvg" aria-checked="false" aria-disabled="false" style="padding:1px;padding-top:3px;pointer-events:visible;" xml:space="preserve" viewbox="0 0 30 30" preserveaspectratio="xMinYMin meet"><circle fill="#FFFFFF" stroke="currentColor" stroke-width="2" cx="15" cy="15" r="14"></circle></svg><span class="imhgc_optionLabel"><span>新媒体：微信/微博</span></span>
+                                        </p>
+                                    </li>
+                                    <li class="imhgc_optionsLi aria-content" tabindex="1" role="radio" aria-checked="false" aria-disabled="false" aria-label="传统媒体：报纸/杂志/电视" >
+                                        <p class="imhgc_optionVal radio" style="min-height:26px;line-height:1.4;font-size:12px;font-weight:normal;color:#919191;">
+                                            <svg class="imhgc_optionSvg" aria-checked="false" aria-disabled="false" style="padding:1px;padding-top:3px;pointer-events:visible;" xml:space="preserve" viewbox="0 0 30 30" preserveaspectratio="xMinYMin meet"><circle fill="#FFFFFF" stroke="currentColor" stroke-width="2" cx="15" cy="15" r="14"></circle></svg><span class="imhgc_optionLabel"><span>传统媒体：报纸/杂志/电视</span></span>
+                                        </p>
+                                    </li>
+                                    <li class="imhgc_optionsLi aria-content" tabindex="1" role="radio" aria-checked="false" aria-disabled="false" aria-label="网络：网站" >
+                                        <p class="imhgc_optionVal radio" style="min-height:26px;line-height:1.4;font-size:12px;font-weight:normal;color:#919191;">
+                                            <svg class="imhgc_optionSvg" aria-checked="false" aria-disabled="false" style="padding:1px;padding-top:3px;pointer-events:visible;" xml:space="preserve" viewbox="0 0 30 30" preserveaspectratio="xMinYMin meet"><circle fill="#FFFFFF" stroke="currentColor" stroke-width="2" cx="15" cy="15" r="14"></circle></svg><span class="imhgc_optionLabel"><span>网络：网站</span></span>
+                                        </p>
+                                    </li>
+                                    <li class="imhgc_optionsLi aria-content" tabindex="1" role="radio" aria-checked="false" aria-disabled="false" aria-label="介绍：朋友/亲戚" >
+                                        <p class="imhgc_optionVal radio" style="min-height:26px;line-height:1.4;font-size:12px;font-weight:normal;color:#919191;">
+                                            <svg class="imhgc_optionSvg" aria-checked="false" aria-disabled="false" style="padding:1px;padding-top:3px;pointer-events:visible;" xml:space="preserve" viewbox="0 0 30 30" preserveaspectratio="xMinYMin meet"><circle fill="#FFFFFF" stroke="currentColor" stroke-width="2" cx="15" cy="15" r="14"></circle></svg><span class="imhgc_optionLabel"><span>介绍：朋友/亲戚</span></span>
+                                        </p>
+                                    </li>
+                                    <li class="imhgc_optionsLi aria-content" tabindex="1" role="radio" aria-checked="false" aria-disabled="false" aria-label="大型活动：海归招聘会、展会等" >
+                                        <p class="imhgc_optionVal radio" style="min-height:26px;line-height:1.4;font-size:12px;font-weight:normal;color:#919191;">
+                                            <svg class="imhgc_optionSvg" aria-checked="false" aria-disabled="false" style="padding:1px;padding-top:3px;pointer-events:visible;" xml:space="preserve" viewbox="0 0 30 30" preserveaspectratio="xMinYMin meet"><circle fill="#FFFFFF" stroke="currentColor" stroke-width="2" cx="15" cy="15" r="14"></circle></svg><span class="imhgc_optionLabel"><span>大型活动：海归招聘会、展会等</span></span>
+                                        </p>
+                                    </li>
+                                    <li class="imhgc_optionsLi aria-content" tabindex="1" role="radio" aria-checked="false" aria-disabled="false" aria-label="其他" >
+                                        <p class="imhgc_optionVal radio" style="min-height:26px;line-height:1.4;font-size:12px;font-weight:normal;color:#919191;">
+                                            <svg class="imhgc_optionSvg" aria-checked="false" aria-disabled="false" style="padding:1px;padding-top:5px;pointer-events:visible;" xml:space="preserve" viewbox="0 0 30 30" preserveaspectratio="xMinYMin meet"><circle fill="#FFFFFF" stroke="currentColor" stroke-width="2" cx="15" cy="15" r="14"></circle></svg><span class="imhgc_optionLabel"><span>其他</span></span>
+                                        </p>
+                                    </li>
+                                    <li class="clearB"></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="imhg_component input" >
+                            <div class="imhg_componentText">
+                                <p class="imhgc_title" style="line-height:1.4;font-size:14px;font-weight:normal;color:#919191;" >
+                                    <span><span>推荐人</span></span><span></span>
+                                </p>
+                                <p class="imhgc_describe" style="line-height:1.4;font-size:12px;font-weight:normal;color:#919191;" >
+                                    <span><span>如果没有不用填</span></span><span></span>
+                                </p>
+                            </div>
+                            <div class="imhg_componentBody">
+                                <div class="imhgc_content imhgc_widthCp" style="width:80%;">
+                                    <span class="aria-placeholder"  aria-label="."></span>
+                                    <div class="imhgc_input" style="height:28px;line-height:1.4;font-size:12px;">
+                                        <input class="imhgi_input aria-content" tabindex="1"  aria-required="0" type="text" spellcheck="false" autocomplete="off" value="" style="font-size:12px;line-height:1.4;">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="imhg_component radio" >
+                            <div class="imhg_componentText">
+                                <p class="imhgc_title" style="line-height:1.4;font-size:14px;font-weight:normal;color:#919191;" >
+                                    <span><span>拟任协会职务</span></span><span class="imhgc_required" tabindex="-1" aria-label="(必填)">*</span><span></span>
+                                </p>
+                            </div>
+                            <div class="imhg_componentBody">
+                                <ul class="imhgc_content aria-content layout-1" role="radiogroup" tabindex="1" >
+                                    <li class="imhgc_optionsLi aria-content" tabindex="1" role="radio" aria-checked="false" aria-disabled="false" aria-label="会员" >
+                                        <p class="imhgc_optionVal radio" style="min-height:26px;line-height:1.4;font-size:12px;font-weight:normal;color:#919191;">
+                                            <svg class="imhgc_optionSvg" aria-checked="false" aria-disabled="false" style="padding:1px;padding-top:3px;pointer-events:visible;" xml:space="preserve" viewbox="0 0 30 30" preserveaspectratio="xMinYMin meet"><circle fill="#FFFFFF" stroke="currentColor" stroke-width="2" cx="15" cy="15" r="14"></circle></svg><span class="imhgc_optionLabel"><span>会员</span></span>
+                                        </p>
+                                    </li>
+                                    <li class="imhgc_optionsLi aria-content" tabindex="1" role="radio" aria-checked="false" aria-disabled="false" aria-label="理事" >
+                                        <p class="imhgc_optionVal radio" style="min-height:26px;line-height:1.4;font-size:12px;font-weight:normal;color:#919191;">
+                                            <svg class="imhgc_optionSvg" aria-checked="false" aria-disabled="false" style="padding:1px;padding-top:3px;pointer-events:visible;" xml:space="preserve" viewbox="0 0 30 30" preserveaspectratio="xMinYMin meet"><circle fill="#FFFFFF" stroke="currentColor" stroke-width="2" cx="15" cy="15" r="14"></circle></svg><span class="imhgc_optionLabel"><span>理事</span></span>
+                                        </p>
+                                    </li>
+                                    <li class="imhgc_optionsLi aria-content" tabindex="1" role="radio" aria-checked="false" aria-disabled="false" aria-label="常务理事" >
+                                        <p class="imhgc_optionVal radio" style="min-height:26px;line-height:1.4;font-size:12px;font-weight:normal;color:#919191;">
+                                            <svg class="imhgc_optionSvg" aria-checked="false" aria-disabled="false" style="padding:1px;padding-top:3px;pointer-events:visible;" xml:space="preserve" viewbox="0 0 30 30" preserveaspectratio="xMinYMin meet"><circle fill="#FFFFFF" stroke="currentColor" stroke-width="2" cx="15" cy="15" r="14"></circle></svg><span class="imhgc_optionLabel"><span>常务理事</span></span>
+                                        </p>
+                                    </li>
+                                    <li class="clearB"></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="imhg_component picAttachment" >
+                            <div class="imhg_componentText">
+                                <p class="imhgc_title" style="line-height:1.4;font-size:14px;font-weight:normal;color:#919191;" >
+                                    <span><span>照片</span></span><span class="imhgc_required" tabindex="-1" aria-label="(必填)">*</span><span></span>
+                                </p>
+                                <p class="imhgc_describe" style="line-height:1.4;font-size:12px;font-weight:normal;color:#919191;" >
+                                    <span><span>请上传本人正面清晰上身照</span></span><span></span>
+                                </p>
+                                <p class="imhgc_tips" style="line-height:1.4;font-size:10px;color:rgba(145,145,145,0.7);">
+                                    支持 jpg, png, gif, bmp, psd, tiff 等图片格式
+                                </p>
+                            </div>
+                            <div class="imhg_componentBody">
+                                <ul class="imhgc_pictureAttachment">
+                                    <li class="imhgc_paItem add">
+                                        <div class="imhgc_paItem_wrapper">
+                                            <div class="imhgc_paImgPlaceholder">
+                                                <i class="fa fa-file-image-o" style="font-size: 50px;color:#A7A7A9;"></i>
+                                                <i class="fa fa-plus-square imhgc_paImgState" style="font-size: 16px;"></i>
+                                            </div>
+                                            <div class="imhgc_paContentInfo">
+                                                <p class="imhgc_paAddTitle">
+                                                    点击选择图片
+                                                </p>
+                                                <p class="imhgc_paAddTips">
+                                                    （需小于1M）
+                                                </p>
+                                            </div>
+                                            <input class="imhgc_ufInput" type="file" size="1">
+                                        </div>
+                                    </li>
+                                    <li class="clearB"></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="imhg_component imhg_staticComponent separator" >
+                            <div class="imhg_componentBorder">
+                            </div>
+                            <p class="imhgc_title imhgc_title_item" style="line-height:1.4;font-size:14px;font-weight:normal;color:#919191;" >
+                                <span>留学背景</span>
+                            </p>
+                            <hr class="imhgc_separatorHr undefined">
+                            <p class="imhgc_describe" style="line-height:1.4;font-size:12px;font-weight:normal;color:#919191;" >
+                                <span><span>请填写最高学历信息</span></span><span></span>
+                            </p>
+                        </div>
+                        <div class="imhg_component city" >
+                            <div class="imhg_componentText">
+                                <p class="imhgc_title" style="line-height:1.4;font-size:14px;font-weight:normal;color:#919191;" >
+                                    <span><span>留学国家</span></span><span class="imhgc_required" tabindex="-1" aria-label="(必填)">*</span><span></span>
+                                </p>
+                            </div>
+                            <div class="imhg_componentBody">
+                                <div class="imhgc_mlContent">
+                                    <div class="imhgc_mlItem imhgc_select" style="width:244px;height:28px;line-height:1.4;font-size:12px;font-weight:normal;">
+                                        <p class="imhgc_selectValue" tabindex="1">
+                                            请选择
+                                        </p>
+                                        <i class="iconfont imhgc_selectArrow" style="line-height:1.4;font-size:12px;font-weight:normal;"></i>
+                                        <ul class="imhgc_selectList">
+                                        </ul>
+                                    </div>
+                                    <div class="clearB">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="imhg_component input" >
+                            <div class="imhg_componentText">
+                                <p class="imhgc_title" style="line-height:1.4;font-size:14px;font-weight:normal;color:#919191;" >
+                                    <span><span>毕业学校</span></span><span class="imhgc_required" tabindex="-1" aria-label="(必填)">*</span><span></span>
+                                </p>
+                            </div>
+                            <div class="imhg_componentBody">
+                                <div class="imhgc_content imhgc_widthCp" style="width:80%;">
+                                    <span class="aria-placeholder"  aria-label="."></span>
+                                    <div class="imhgc_input" style="height:28px;line-height:1.4;font-size:12px;">
+                                        <input class="imhgi_input aria-content" tabindex="1"  aria-required="1" type="text" spellcheck="false" autocomplete="off" value="" style="font-size:12px;line-height:1.4;">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="imhg_component input" >
+                            <div class="imhg_componentText">
+                                <p class="imhgc_title" style="line-height:1.4;font-size:14px;font-weight:normal;color:#919191;" >
+                                    <span><span>专业</span></span><span class="imhgc_required" tabindex="-1" aria-label="(必填)">*</span><span></span>
+                                </p>
+                                <p class="imhgc_describe" style="line-height:1.4;font-size:12px;font-weight:normal;color:#919191;" >
+                                    <span><span>中文/英文</span></span><span></span>
+                                </p>
+                            </div>
+                            <div class="imhg_componentBody">
+                                <div class="imhgc_content imhgc_widthCp" style="width:80%;">
+                                    <span class="aria-placeholder"  aria-label="."></span>
+                                    <div class="imhgc_input" style="height:28px;line-height:1.4;font-size:12px;">
+                                        <input class="imhgi_input aria-content" tabindex="1"  aria-required="1" type="text" spellcheck="false" autocomplete="off" value="" style="font-size:12px;line-height:1.4;">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="imhg_component input" >
+                            <div class="imhg_componentText">
+                                <p class="imhgc_title" style="line-height:1.4;font-size:14px;font-weight:normal;color:#919191;" >
+                                    <span><span>学位</span></span><span class="imhgc_required" tabindex="-1" aria-label="(必填)">*</span><span></span>
+                                </p>
+                            </div>
+                            <div class="imhg_componentBody">
+                                <div class="imhgc_content imhgc_widthCp" style="width:80%;">
+                                    <span class="aria-placeholder"  aria-label="."></span>
+                                    <div class="imhgc_input" style="height:28px;line-height:1.4;font-size:12px;">
+                                        <input class="imhgi_input aria-content" tabindex="1"  aria-required="1" type="text" spellcheck="false" autocomplete="off" value="" style="font-size:12px;line-height:1.4;">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="imhg_component attachment" >
+                            <div class="imhg_componentText">
+                                <p class="imhgc_title" style="line-height:1.4;font-size:14px;font-weight:normal;color:#919191;" >
+                                    <span><span>国外毕业证书</span></span><span class="imhgc_required" tabindex="-1" aria-label="(必填)">*</span><span></span>
+                                </p>
+                            </div>
+                            <div class="imhg_componentBody">
+                                <div class="imhgc_content imhgc_widthCp" style="width:80%;">
+                                    <div class="imhgc_uploadFile empty" style="height:28px;line-height:1.4;font-size:12px;">
+                                        <i class="fa fa-file imhgc_ufIcon" style="line-height:26px;font-size:16px;"></i>
+                                        <div class="imhgc_ufContent">
+                                            <p class="imhgc_ufText">
+                                                <span>上传文件（需小于1M）</span>
+                                            </p>
+                                        </div>
+                                        <input class="imhgc_ufInput" type="file" multiple="">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="imhg_component attachment" >
+                            <div class="imhg_componentText">
+                                <p class="imhgc_title" style="line-height:1.4;font-size:14px;font-weight:normal;color:#919191;" >
+                                    <span><span>国外学历学位认证书</span></span><span class="imhgc_required" tabindex="-1" aria-label="(必填)">*</span><span></span>
+                                </p>
+                            </div>
+                            <div class="imhg_componentBody">
+                                <div class="imhgc_content imhgc_widthCp" style="width:80%;">
+                                    <div class="imhgc_uploadFile empty" style="height:28px;line-height:1.4;font-size:12px;">
+                                        <i class="fa fa-file imhgc_ufIcon" style="line-height:26px;font-size:16px;"></i>
+                                        <div class="imhgc_ufContent">
+                                            <p class="imhgc_ufText">
+                                                <span>上传文件（需小于1M）</span>
+                                            </p>
+                                        </div>
+                                        <input class="imhgc_ufInput" type="file" multiple="">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="imhg_component imhg_staticComponent separator" >
+                            <div class="imhg_componentBorder">
+                            </div>
+                            <p class="imhgc_title imhgc_title_item" style="line-height:1.4;font-size:14px;font-weight:normal;color:#919191;" >
+                                <span>工作信息</span>
+                            </p>
+                            <hr class="imhgc_separatorHr undefined">
+                        </div>
+                        <div class="imhg_component dateTime_date" >
+                            <div class="imhg_componentText">
+                                <p class="imhgc_title" style="line-height:1.4;font-size:14px;font-weight:normal;color:#919191;" >
+                                    <span><span>参加工作时间</span></span><span class="imhgc_required" tabindex="-1" aria-label="(必填)">*</span><span></span>
+                                </p>
+                            </div>
+                            <div class="imhg_componentBody">
+                                <div class="imhgc_content imhgc_widthCp" style="width:80%;">
+                                    <div class="imhgc_datetime" name="input_calendar_dropdown">
+                                        <div class="imhgc_input has-icon" style="height:28px;line-height:1.4;font-size:12px;padding-left:22px;">
+                                            <i class="fa fa-calendar imhgi_icon"></i>
+                                            <input class="imhgi_input aria-content" tabindex="0" type="text" spellcheck="false" style="font-size:12px;line-height:1.4;" autocomplete="off">
+                                        </div>
+                                        <!-- 需要时间选择器 -->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="imhg_component dropDown" >
+                            <div class="imhg_componentText">
+                                <p class="imhgc_title" style="line-height:1.4;font-size:14px;font-weight:normal;color:#919191;" >
+                                    <span><span>从事行业</span></span><span class="imhgc_required" tabindex="-1" aria-label="(必填)">*</span><span></span>
+                                </p>
+                            </div>
+                            <div class="imhg_componentBody">
+                                <div class="imhgc_content imhgc_widthCp" style="width:80%;">
+                                    <select name="vocation"  class="imhgc_select" style="height:28px;line-height:1.4;font-size:12px;font-weight:normal;width: 100%;">
+                                        <option value="">请选择行业</option>
+                                        <option value="金融贸易">金融贸易</option>
+                                        <option value="信息科技">信息科技</option>
+                                        <option value="医疗保健">医疗保健</option>
+                                        <option value="服装鞋帽">服装鞋帽</option>
+                                        <option value="美容化妆">美容化妆</option>
+                                        <option value="工业制造">工业制造</option>
+                                        <option value="影视广告">影视广告</option>
+                                        <option value="政府机关">政府机关</option>
+                                        <option value="教育培训">教育培训</option>
+                                        <option value="咨询服务">咨询服务</option>
+                                        <option value="其他">其他</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="imhg_component company" >
+                            <div class="imhg_componentText">
+                                <p class="imhgc_title" style="line-height:1.4;font-size:14px;font-weight:normal;color:#919191;" >
+                                    <span><span>工作单位</span></span><span class="imhgc_required" tabindex="-1" aria-label="(必填)">*</span><span></span>
+                                </p>
+                            </div>
+                            <div class="imhg_componentBody">
+                                <div class="imhgc_content imhgc_widthCp" style="width:80%;">
+                                    <span class="aria-placeholder"  aria-label="."></span>
+                                    <div class="imhgc_input has-icon" style="height:28px;line-height:1.4;font-size:12px;padding-left:22px;">
+                                        <i class="fa fa-building-o imhgi_icon"></i>
+                                        <input class="imhgi_input aria-content" tabindex="1"  aria-required="1" type="text" spellcheck="false" autocomplete="off" value="" style="font-size:12px;line-height:1.4;">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="imhg_component position" >
+                            <div class="imhg_componentText">
+                                <p class="imhgc_title" style="line-height:1.4;font-size:14px;font-weight:normal;color:#919191;" >
+                                    <span><span>职位</span></span><span class="imhgc_required" tabindex="-1" aria-label="(必填)">*</span><span></span>
+                                </p>
+                            </div>
+                            <div class="imhg_componentBody">
+                                <div class="imhgc_content imhgc_widthCp" style="width:80%;">
+                                    <span class="aria-placeholder"  aria-label="."></span>
+                                    <div class="imhgc_input has-icon" style="height:28px;line-height:1.4;font-size:12px;padding-left:22px;">
+                                        <i class="fa fa-briefcase imhgi_icon" ></i>
+                                        <input class="imhgi_input aria-content" tabindex="1"  aria-required="1" type="text" spellcheck="false" autocomplete="off" value="" style="font-size:12px;line-height:1.4;">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="imhg_component input" >
+                            <div class="imhg_componentText">
+                                <p class="imhgc_title" style="line-height:1.4;font-size:14px;font-weight:normal;color:#919191;" >
+                                    <span><span>主要社会职务</span></span><span class="imhgc_required" tabindex="-1" aria-label="(必填)">*</span><span></span>
+                                </p>
+                            </div>
+                            <div class="imhg_componentBody">
+                                <div class="imhgc_content imhgc_widthCp" style="width:80%;">
+                                    <span class="aria-placeholder"  aria-label="支持输入换行的内容.."></span>
+                                    <div class="imhgc_input textarea" style="line-height:1.4;font-size:12px;">
+                                        <textarea class="imhgi_input aria-content" tabindex="1"  aria-required="1" type="text" spellcheck="false" autocomplete="off" style="font-size:12px;line-height:1.4;"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="imhg_component picAttachment" >
+                            <div class="imhg_componentText">
+                                <p class="imhgc_title" style="line-height:1.4;font-size:14px;font-weight:normal;color:#919191;" >
+                                    <span><span>个人名片</span></span><span class="imhgc_required" tabindex="-1" aria-label="(必填)">*</span><span></span>
+                                </p>
+                                <p class="imhgc_tips" style="line-height:1.4;font-size:10px;color:rgba(145,145,145,0.7);">
+                                    支持 jpg, png, gif, bmp, psd, tiff 等图片格式
+                                </p>
+                            </div>
+                            <div class="imhg_componentBody">
+                                <ul class="imhgc_pictureAttachment">
+                                    <li class="imhgc_paItem add">
+                                        <div class="imhgc_paItem_wrapper">
+                                            <div class="imhgc_paImgPlaceholder">
+                                                <i class="fa fa-file-image-o" style="font-size: 50px;color:#A7A7A9;"></i>
+                                                <i class="fa fa-plus-square imhgc_paImgState" style="font-size: 16px;"></i>
+                                            </div>
+                                            <div class="imhgc_paContentInfo">
+                                                <p class="imhgc_paAddTitle">
+                                                    点击选择图片
+                                                </p>
+                                                <p class="imhgc_paAddTips">
+                                                    （需小于1M）
+                                                </p>
+                                            </div>
+                                            <input class="imhgc_ufInput" type="file" size="1">
+                                        </div>
+                                    </li>
+                                    <li class="clearB"></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="imhg_component imhg_staticComponent separator" >
+                            <div class="imhg_componentBorder">
+                            </div>
+                            <p class="imhgc_title imhgc_title_item" style="line-height:1.4;font-size:14px;font-weight:normal;color:#919191;" >
+                                <span>咨询电话</span>
+                            </p>
+                            <hr class="imhgc_separatorHr undefined">
+                            <p class="imhgc_describe" style="line-height:1.4;font-size:12px;font-weight:normal;color:#919191;" >
+                                <span><span>0755-83215830</span></span><span></span>
+                            </p>
+                        </div>
+                        <div class="clearB">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="submitWrapper">
+                <div>
+                    <div class="submit" style="text-align:center;background-color:#FFFFFF;" aria-live="assertive" aria-relevant="text">
+                        <a class="imhg_submitBtn" tabindex="1" role="button" aria-disabled="false"  style="width:auto;height:30px;padding-top:7px;padding-bottom:7px;padding-left:20px;padding-right:20px;font-weight:normal;background:#2D8FD9;">提交</a>
+                        <div class="clearB">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+
+<div class="copyright">
+    <div class="c_main">
+        <a class="poweredBy" target="_blank" href="http://www.mikecrm.com/indexForm.php?ref=form"><span class="poweredBy_logo"></span><span class="poweredBy_title" style="max-width:650px;">由我是海归APP提供技术支持</span></a>
+    </div>
+</div>
+
+<div class="popwin" ></div>
+</body>
+</html>
