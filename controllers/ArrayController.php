@@ -64,4 +64,24 @@ class ArrayController extends Controller
         
     }
 
+    /**
+     * 数组转换1
+     */
+    public function actionName1(){
+        $arr = [
+            'name' => ['aaa','bbb'],
+            'is_open' => [1,2],
+            'type' => [2],
+        ];
+        $res = [];
+        $keys = array_keys($arr);
+        for($i=0;$i<count(current($arr));$i++){
+            $values = array_column($arr, $i);
+            $res[] = array_combine($keys, $values);
+        }
+        echo '<pre>';
+        print_r($res);
+        echo '</pre>';
+    }
+
 }

@@ -10,6 +10,7 @@
 namespace app\controllers;
 
 use Yii;
+use yii\helpers\Url;
 use yii\web\Controller;
 
 class StringController extends Controller
@@ -191,13 +192,29 @@ EOD
     }
 
     public function actionTest(){
-        echo '"000"和0 ';
-        if('000' == 0){
-            echo '相等';
-        }else{
-            echo '不相等';
-        }
-        echo '<br/>';
+//        echo '"000"和0 ';
+//        if('000' == 0){
+//            echo '相等';
+//        }else{
+//            echo '不相等';
+//        }
+//        echo '<br/>';
+
+        // 将换行替换为逗号或其他字符
+        //        $str = '';
+//        $arr = explode("\n", $str);
+//        $new_str = '';
+//        foreach($arr as $value){
+//            $value = trim($value);
+//            if($new_str){
+//                $new_str .= ','.$value;
+//            }else{
+//                $new_str .= $value;
+//            }
+//        }
+//        echo '<pre>';
+//        print_r($new_str);
+//        echo '</pre>';
 
     }
 
@@ -234,6 +251,17 @@ EOD
         }elseif(preg_match('/^([\x{4e00}-\x{9fa5}]||[\x{FE30}-\x{FFA0}]|\r|\n)+$/u', $str)>0){
             echo '含有中文和中文标点';
         }
+    }
+
+
+    public function actionStrReplace(){
+        $path = Yii::$app->basePath.'/web/upload/深圳市海归协会.txt';
+        $content = file_get_contents($path);
+        $content = preg_replace('/aria\-labelledby\=\".*?\"/', '', $content);
+        $res = file_put_contents($path, $content);
+        echo '<pre>';
+        var_dump($res);
+        echo '</pre>';
     }
 
 }

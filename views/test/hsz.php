@@ -14,7 +14,7 @@ use yii\helpers\Url;
 <html>
 <head>
     <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no">
-    <title>官宣高档唯美浪漫手绘花朵婚礼邀请函_H5预览_欢庆网</title>
+    <title>我们结婚啦！江铭&张晓丹</title>
     <link rel="stylesheet" href="https://at.alicdn.com/t/font_636935_lbfjw1ihf8o20529.css">
     <script type="text/javascript" src="https://api.map.baidu.com/api?v=2.0&amp;ak=248eP03KoeorIx8OL9LHRGKA&amp;s=1"></script>
     <script type="text/javascript" src="https://api.map.baidu.com/getscript?v=2.0&amp;ak=248eP03KoeorIx8OL9LHRGKA&amp;services=&amp;t=20181212102408"></script>
