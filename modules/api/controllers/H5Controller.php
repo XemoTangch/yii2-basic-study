@@ -19,15 +19,15 @@ class H5Controller extends Controller {
     public $enableCsrfValidation=false;
 
     public function actionGetbycode(){
-        $data = $this->getData();
+        $data = $this->dealData();
         die($data);
     }
 
-
-    public function actionDealData(){
+    public function dealData(){
         $data = $this->getData();
         $data = json_decode($data, true);
-        $sceneinfo = &$data['data']['sceneinfo'];
+        $sceneInfo = &$data['data']['sceneinfo'];
+        $sceneInfo = $this->dealSceneinfo($sceneInfo);
         $lists = &$data['data']['lists']; // 页面数据
         $img = [];
         $text = [];
@@ -54,6 +54,11 @@ class H5Controller extends Controller {
         return json_encode($data);
     }
 
+
+    public function actionDealData(){
+        $data = $this->dealData();
+    }
+
     /**
      * 处理图片元素
      * @param $element
@@ -67,9 +72,20 @@ class H5Controller extends Controller {
      * @param $element
      */
     public function dealContentElement($element){
-        switch (){
 
-        }
+    }
+
+    /**
+     * 处理场景值
+     * @param $sceneInfo
+     */
+    public function dealSceneInfo($sceneInfo){
+        $img_base_url = Url::to('@web/images/hsz/');
+        $sceneInfo['src'] = $img_base_url.'H5WLDwGjGFGw.jpg';
+        $sceneInfo['thumb_list'] = $img_base_url.'thumb_300_534_5bd1d7325c8f0.jpg';
+        $sceneInfo['music'] = Url::to('@web/audios/hsz/f34021aba39cf87d783c26c76707cfec.mp3');
+        $sceneInfo['scenepage'] = $sceneInfo['src'];
+        $sceneInfo['qrcode'] = $img_base_url.'H5WLDwGjGFGw.png';
     }
 
     /**
