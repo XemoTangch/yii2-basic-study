@@ -26,27 +26,29 @@ class H5Controller extends Controller {
     public function dealData(){
         $data = $this->getData();
         $data = json_decode($data, true);
-        $sceneInfo = &$data['data']['sceneinfo'];
-        $sceneInfo = $this->dealSceneinfo($sceneInfo);
-        $lists = &$data['data']['lists']; // 页面数据
+        $sceneInfo = $data['data']['sceneinfo'];
+        $data['data']['sceneinfo'] = $this->dealSceneinfo($sceneInfo);
+        $lists = $data['data']['lists']; // 页面数据
         $img = [];
         $text = [];
         for($page=0;$page<count($lists);$page++){
-            $pageData = &$lists[$page]; // 页面元素
-            $elements = &$pageData['elements'];
+            $pageData = $lists[$page]; // 页面元素
+            $elements = $pageData['elements'];
             for($e=0;$e<count($elements);$e++){
-                $element = &$elements[$e];
+                $element = $elements[$e];
                 // 判断元素类型
                 switch ($element['type']) {
                     case 'picture':
                         $src = $element['src'];
                         $img[] = $src;
                         $element = $this->dealImgElement($element);
+                        $data['data']['lists'][$page]['elements'][$e] = $element;
                         break;
                     case 'text':
                         $content = $element['content'];
                         $text[$page][$e] = $content;
-                        $element['content'] = $this->dealContentElement($element);
+                        $element = $this->dealContentElement($element);
+                        $data['data']['lists'][$page]['elements'][$e] = $element;
                         break;
                 }
             }
@@ -57,6 +59,9 @@ class H5Controller extends Controller {
 
     public function actionDealData(){
         $data = $this->dealData();
+//        echo '<pre>';
+//        print_r(json_decode($data));
+//        echo '</pre>';
     }
 
     /**
@@ -65,6 +70,7 @@ class H5Controller extends Controller {
      */
     public function dealImgElement($element){
         $element['src'] = $this->downLoadPic($element['src']);
+        return $element;
     }
 
     /**
@@ -72,7 +78,8 @@ class H5Controller extends Controller {
      * @param $element
      */
     public function dealContentElement($element){
-
+        $element['fontUrl'] = Url::to('@web/fonts/1539753918237-rf229j.ttf');
+        return $element;
     }
 
     /**
@@ -86,6 +93,7 @@ class H5Controller extends Controller {
         $sceneInfo['music'] = Url::to('@web/audios/hsz/f34021aba39cf87d783c26c76707cfec.mp3');
         $sceneInfo['scenepage'] = $sceneInfo['src'];
         $sceneInfo['qrcode'] = $img_base_url.'H5WLDwGjGFGw.png';
+        return $sceneInfo;
     }
 
     /**
