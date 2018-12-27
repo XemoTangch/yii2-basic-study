@@ -51,8 +51,8 @@ webpackJsonp([1], {
             , u = i("7+uW")
             , h = i("NYxO")
             , f = void 0
-            // , host = 'love.jm-ai.com';
-            , host = 'www.yii2study.one';
+            , host = 'love.jm-ai.com';
+            // , host = 'www.yii2study.one';
         f = 'http://' + host + '/api/';
         var g = function(e, t) {
             var i = void 0;
