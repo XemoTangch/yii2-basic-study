@@ -24,7 +24,7 @@ class H5Controller extends Controller {
     }
 
     public function dealData(){
-        $data = $this->getData1();
+        $data = $this->getData();
         $data = json_decode($data, true);
         $sceneInfo = $data['data']['sceneinfo'];
         $data['data']['sceneinfo'] = $this->dealSceneinfo($sceneInfo);
