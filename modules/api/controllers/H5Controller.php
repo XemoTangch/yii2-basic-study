@@ -75,7 +75,8 @@ class H5Controller extends Controller {
      * @param $element
      */
     public function dealContentElement($element){
-        $element['fontUrl'] = Url::to('@web/fonts/1539753918237-rf229j.ttf');
+//        $element['fontUrl'] = Url::to('@web/fonts/1539753918237-rf229j.ttf');
+        $element['fontUrl'] = 'http://image.jm-ai.com/fonts/1539753918237-rf229j.ttf';
         return $element;
     }
 
@@ -84,10 +85,12 @@ class H5Controller extends Controller {
      * @param $sceneInfo
      */
     public function dealSceneInfo($sceneInfo){
-        $img_base_url = Url::to('@web/images/hsz/');
+//        $img_base_url = Url::to('@web/images/hsz/');
+        $img_base_url = 'http://image.jm-ai.com/images/hsz/';
         $sceneInfo['src'] = $img_base_url.'H5WLDwGjGFGw.jpg';
         $sceneInfo['thumb_list'] = $img_base_url.'thumb_300_534_5bd1d7325c8f0.jpg';
-        $sceneInfo['music'] = Url::to('@web/audios/hsz/f34021aba39cf87d783c26c76707cfec.mp3');
+//        $sceneInfo['music'] = Url::to('@web/audios/hsz/f34021aba39cf87d783c26c76707cfec.mp3');
+        $sceneInfo['music'] = 'http://image.jm-ai.com/audios/hsz/f34021aba39cf87d783c26c76707cfec.mp3';
         $sceneInfo['scenepage'] = $sceneInfo['src'];
         $sceneInfo['qrcode'] = $img_base_url.'H5WLDwGjGFGw.png';
         return $sceneInfo;
@@ -104,7 +107,8 @@ class H5Controller extends Controller {
         $filename = end($urlInfo);
         // 检查路径是否存在，如不存在则创建
         $dir = Yii::$app->getBasePath(true).'/web/images/hsz/';
-        $imgUrl = Url::to('@web/images/hsz/'.$filename, true);
+//        $imgUrl = Url::to('@web/images/hsz/'.$filename, true);
+        $imgUrl = 'http://image.jm-ai.com/images/hsz/'.$filename;
         if (!is_dir($dir)){
             //第三个参数是“true”表示能创建多级目录，iconv防止中文目录乱码
             $res=mkdir(iconv("UTF-8", "GBK", $dir),0777,true);
