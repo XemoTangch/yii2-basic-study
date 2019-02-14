@@ -84,4 +84,72 @@ class ArrayController extends Controller
         echo '</pre>';
     }
 
+
+    public function actionTree(){
+        $array = [
+            ['id'=>1, 'name'=>'a', 'pid'=>''],
+            ['id'=>2, 'name'=>'b', 'pid'=>''],
+            ['id'=>3, 'name'=>'c', 'pid'=>''],
+            ['id'=>4, 'name'=>'d', 'pid'=>'1'],
+            ['id'=>5, 'name'=>'e', 'pid'=>'1'],
+            ['id'=>6, 'name'=>'f', 'pid'=>'1'],
+            ['id'=>7, 'name'=>'g', 'pid'=>'2'],
+            ['id'=>8, 'name'=>'h', 'pid'=>'2'],
+            ['id'=>9, 'name'=>'i', 'pid'=>'3'],
+        ];
+        $tree = $this->generateTree($array);
+        $tree1 = $this->getTree($array);
+    }
+
+    /**
+     * 使用引用实现无限极分类
+     * @param $array array
+     * @return array
+     */
+    public function generateTree($array){
+        //第一步 构造数据
+        $items = array();
+        foreach($array as $value){
+            $items[$value['id']] = $value;
+        }
+        //第二部 遍历数据 生成树状结构
+        $tree = array();
+        foreach($items as $key => $value){
+            if(isset($items[$value['pid']])){
+                $items[$value['pid']]['son'][] = &$items[$key];
+            }else{
+                $tree[] = &$items[$key];
+            }
+        }
+        return $tree;
+    }
+
+    /**
+     * 递归实现无限极分类
+     * @param $array
+     * @param int $pid
+     * @param int $level
+     * @return array
+     */
+    public function getTree($array, $pid =0, $level = 0){
+        //声明静态数组,避免递归调用时,多次声明导致数组覆盖
+        static $list = [];
+        foreach ($array as $key => $value){
+            //第一次遍历,找到父节点为根节点的节点 也就是pid=0的节点
+            if ($value['pid'] == $pid){
+                //父节点为根节点的节点,级别为0，也就是第一级
+                $value['level'] = $level;
+                //把数组放到list中
+                $list[] = $value;
+                //把这个节点从数组中移除,减少后续递归消耗
+                unset($array[$key]);
+                //开始递归,查找父ID为该节点ID的节点,级别则为原级别+1
+                $this->getTree($array, $value['id'], $level+1);
+
+            }
+        }
+        return $list;
+    }
+
+
 }
